@@ -2,6 +2,7 @@ import { useEffect, Suspense } from 'react';
 import HeaderComponent from './header';
 import SuspendFallbackLoading from './suspendFallbackLoading';
 import { Outlet, useLocation, useNavigate } from 'react-router';
+import NavBar from './navBar';
 
 const LayoutPage = () => {
   const location = useLocation();
@@ -16,7 +17,8 @@ const LayoutPage = () => {
   return (
     <>
       <HeaderComponent />
-      <div className="layout-page-content">
+      <NavBar drawerWidth={150}></NavBar>
+      <main className="layout-page-content">
         <Suspense
           fallback={
             <SuspendFallbackLoading
@@ -26,7 +28,7 @@ const LayoutPage = () => {
           }>
           <Outlet />
         </Suspense>
-      </div>
+      </main>
     </>
   );
 };

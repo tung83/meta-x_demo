@@ -4,7 +4,7 @@ import WrapperRouteComponent from './config';
 import { useRoutes } from 'react-router-dom';
 
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../pages/404'));
-const Guide = lazy(() => import(/* webpackChunkName: "guide'"*/ '../pages/guide'));
+const Guide = lazy(() => import(/* webpackChunkName: "guide'"*/ '../pages/home'));
 const Output = lazy(() => import(/* webpackChunkName: "guide'"*/ '../pages/output'));
 
 const routeList = [

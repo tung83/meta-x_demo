@@ -1,31 +1,65 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import MuiButton from '@material-ui/core/Button';
+import { Button } from '@mui/material';
+import clsx from 'clsx';
 
 const styles = (theme) => ({
   root: {
-    borderRadius: 0,
-    fontWeight: theme.typography.fontWeightMedium,
-    fontFamily: theme.typography.fontFamilySecondary,
-    padding: `${theme.spacing(2) - 1}px ${theme.spacing(4)}px`,
-    fontSize: theme.typography.pxToRem(14),
-    boxShadow: 'none',
-    '&:active, &:focus': {
-      boxShadow: 'none'
-    }
+    height: 4,
+    width: 73,
+    backgroundColor: '#FFFFFF',
+    borderRadius: theme.typography.pxToRem(4),
+    display: 'block',
+    margin: `${theme.spacing(1)}px auto 0`
   },
-  sizeSmall: {
-    padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
-    fontSize: theme.typography.pxToRem(13)
+  normal: {
+    height: 4,
+    width: 55,
+    display: 'block',
+    margin: `${theme.spacing(1)}px auto 0`,
+    backgroundColor: theme.palette.secondary.main
   },
-  sizeLarge: {
-    padding: `${theme.spacing(3) - 3}px ${theme.spacing(6)}px`,
-    fontSize: theme.typography.pxToRem(16)
+  markedH4Center: {
+    height: 4,
+    width: 55,
+    display: 'block',
+    margin: `${theme.spacing(1)}px auto 0`,
+    backgroundColor: theme.palette.secondary.main
+  },
+  markedH6Left: {
+    height: 2,
+    width: 28,
+    display: 'block',
+    marginTop: theme.spacing(0.5),
+    background: 'currentColor'
   }
 });
 
-function Button(props) {
-  return <MuiButton {...props} />;
-}
+const variantMapping = {
+  h1: 'h1',
+  h2: 'h1',
+  h3: 'h1',
+  h4: 'h1',
+  h5: 'h3',
+  h6: 'h2',
+  subtitle1: 'h3'
+};
 
-export default withStyles(styles)(Button);
+const MetaButton = ({ children, classes, marked = false, variant, ...other }) => {
+  return (
+    <Button variantMapping={variantMapping} variant={variant} {...other}>
+      {children}
+      {marked ? <span className={clsx(classes.root, classes[variant])} /> : null}
+    </Button>
+  );
+};
+
+MetaButton.propTypes = {
+  children: PropTypes.node,
+  classes: PropTypes.object.isRequired,
+  marked: PropTypes.oneOf([false, 'center', 'left']),
+  variant: PropTypes.string
+};
+
+export default withStyles(styles)(MetaButton);

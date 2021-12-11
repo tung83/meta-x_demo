@@ -1,4 +1,4 @@
-import MetaButton from '../components/Buttton';
+import MetaButton from '../components/Buttton/index2';
 import { useNavigate } from 'react-router-dom';
 
 const NotFoundPage = () => {
