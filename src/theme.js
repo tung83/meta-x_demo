@@ -7,13 +7,28 @@ const htmlFontSize = 16;
 const coef = fontSize / 14;
 const pxToRem = (size) => `${(size / htmlFontSize) * coef}rem`;
 const theme = createTheme({
-  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536
+    }
+  },
   palette: {
     primary: {
-      main: '#ff9b33'
+      main: '#ffffff'
     },
     secondary: {
       main: '#edf2ff'
+    },
+    orange: {
+      main: '#ff9b33'
+    },
+    grey: {
+      light: '#1b1b1b',
+      dark: '#181818'
     },
     white: {
       main: '#ffffff'

@@ -22,7 +22,7 @@ const PrimaryInput = styled(Input)(({ theme }) => {
       opacity: 0.3,
 
       '&:focus': {
-        border: `${theme.typography.pxToRem(3)} solid ${theme.palette.primary.main}`,
+        border: `${theme.typography.pxToRem(3)} solid ${theme.palette.orange.main}`,
         color: theme.palette.white.main,
         backgroundColor: theme.palette.bgDefault,
         opacity: 1

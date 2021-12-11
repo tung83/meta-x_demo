@@ -1,7 +1,6 @@
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import logo from '../../logo.svg';
-import { makeStyles } from '@mui/styles';
+import logo from '../../resources/logo.svg';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,10 +9,6 @@ import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
 
-// eslint-disable-next-line no-unused-vars
-const useStyles = makeStyles((theme) => ({
-  logo: {}
-}));
 const BottomNav = () => (
   <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
     <BottomNavigation sx={{ display: { sm: 'none' } }} showLabels>
@@ -27,8 +22,6 @@ const TopMobileNav = () => {
   const [isHome, setIsHome] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     setIsHome(location.pathname === '/home');
   }, [location]);
   const handleBackClicked = () => {
