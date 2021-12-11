@@ -1,9 +1,11 @@
 import { useEffect, Suspense } from 'react';
-import HeaderComponent from './header';
 import SuspendFallbackLoading from './suspendFallbackLoading';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import NavBar from './navBar';
+import MobileNavBar from './mobileNavBar';
+import AppBar from '@mui/material/AppBar';
 
+const drawerWidth = 150;
 const LayoutPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -13,11 +15,15 @@ const LayoutPage = () => {
       navigate('/dashboard');
     }
   }, [navigate, location]);
-
   return (
-    <>
-      <HeaderComponent />
-      <NavBar drawerWidth={150}></NavBar>
+    <AppBar
+      position="fixed"
+      sx={{
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { sm: `${drawerWidth}px` }
+      }}>
+      <NavBar drawerWidth={drawerWidth}></NavBar>
+      <MobileNavBar />
       <main className="layout-page-content">
         <Suspense
           fallback={
@@ -29,7 +35,7 @@ const LayoutPage = () => {
           <Outlet />
         </Suspense>
       </main>
-    </>
+    </AppBar>
   );
 };
 

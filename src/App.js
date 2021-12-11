@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import RenderRouter from './routes';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -8,13 +7,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <span>{`spacing ${theme.background}`}</span>
-          <Router>
-            <RenderRouter />
-          </Router>
-        </header>
+        <Router>
+          <RenderRouter />
+        </Router>
       </div>
     </ThemeProvider>
   );
