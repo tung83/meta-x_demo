@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiSlider-thumbColorPrimary': {
       background: '#1B1B1B',
       border: `${theme.typography.pxToRem(6)} solid #FFD05D`
+    },
+    '& .MuiSlider-markLabel': {
+      color: theme.palette.white.main
     }
   },
   'MuiSlider-thumbSizeMedium': {
@@ -61,7 +64,7 @@ const PrimarySlider = ({ inputMarks = [] }) => {
 };
 
 PrimarySlider.propTypes = {
-  inputMarks: PropTypes.arrayOf(PropTypes.int).isRequired
+  inputMarks: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 export default PrimarySlider;

@@ -7,6 +7,16 @@ const htmlFontSize = 16;
 const coef = fontSize / 14;
 const pxToRem = (size) => `${(size / htmlFontSize) * coef}rem`;
 const theme = createTheme({
+  components: {
+    // Name of the component ⚛️
+    MuiCssBaseline: {
+      styleOverrides: {
+        '*, *::before, *::after': {
+          color: '#fff'
+        }
+      }
+    }
+  },
   breakpoints: {
     values: {
       xs: 0,
