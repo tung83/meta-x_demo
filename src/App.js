@@ -5,7 +5,7 @@ import theme from './theme';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from 'react-query';
-function App() {
+const App = () => {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
@@ -17,6 +17,6 @@ function App() {
       </ThemeProvider>
     </QueryClientProvider>
   );
-}
+};
 
 export default App;

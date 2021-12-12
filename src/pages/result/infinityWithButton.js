@@ -6,7 +6,6 @@ import OutlineButton from '../../components/Button/OutlineButton';
 import ContainedButton from '../../components/Button/ContainedButton';
 import PrimaryInput from '../../components/Input/PrimaryInput';
 import PrimarySlider from '../../components/Slider/PrimarySlider';
-import InfiniteScroll from 'react-infinite-scroller';
 
 import { useInfiniteQuery } from 'react-query';
 import axios from 'axios';
@@ -19,13 +18,10 @@ const fetchProjects = async ({ pageParam = 1 }) => {
   return { data, nextPage: page < totalPages ? page + 1 : undefined };
 };
 const GuidePge = () => {
-  const { data, error, fetchNextPage, hasNextPage, status } = useInfiniteQuery(
-    'projects',
-    fetchProjects,
-    {
+  const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
+    useInfiniteQuery('projects', fetchProjects, {
       getNextPageParam: (lastPage) => lastPage.nextPage
-    }
-  );
+    });
   if (status === 'loading') {
     return <div>loading...</div>; // loading data
   }
@@ -35,18 +31,16 @@ const GuidePge = () => {
   }
   return (
     <Stack spacing={2} direction="column">
-      <InfiniteScroll hasMore={hasNextPage} loadMore={fetchNextPage}>
-        {data.pages.map((group, i) => {
-          return (
-            <Fragment key={i}>
-              {group.data.map((user) => (
-                <p key={user.id}>{user.name}</p>
-              ))}
-            </Fragment>
-          );
-        })}
-      </InfiniteScroll>
-      {/* {data.pages.map((group, i) => (
+      {data.pages.map((group, i) => {
+        return (
+          <Fragment key={i}>
+            {group.data.map((user) => (
+              <p key={user.id}>{user.name}</p>
+            ))}
+          </Fragment>
+        );
+      })}
+      {data.pages.map((group, i) => (
         <Fragment key={i}>
           {group?.data?.map((user) => (
             <p key={user.id}>{user.name}</p>
@@ -62,7 +56,7 @@ const GuidePge = () => {
             : 'Nothing more to load'}
         </button>
       </div>
-      <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div> */}
+      <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
       <Button variant="text">Text</Button>
       <Button variant="contained">Contained</Button>
       <Button variant="outlined">Outlined</Button>

@@ -6,7 +6,7 @@ import { useRoutes } from 'react-router-dom';
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../pages/404'));
 const Guide = lazy(() => import(/* webpackChunkName: "guide'"*/ '../pages/home'));
 const Output = lazy(() => import(/* webpackChunkName: "output'"*/ '../pages/output'));
-const Result = lazy(() => import(/* webpackChunkName: "result'"*/ '../pages/result'));
+const Result = lazy(() => import(/* webpackChunkName: "result'"*/ '../pages/result/index'));
 
 const routeList = [
   {

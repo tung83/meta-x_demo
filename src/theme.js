@@ -15,6 +15,14 @@ const theme = createTheme({
           color: '#fff'
         }
       }
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          opacity: 0.1,
+          borderColor: '#FFFFFF'
+        }
+      }
     }
   },
   breakpoints: {

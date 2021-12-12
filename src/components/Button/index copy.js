@@ -45,7 +45,7 @@ const variantMapping = {
   subtitle1: 'h3'
 };
 
-function Typography(props) {
+const Typography = (props) => {
   const { children, classes, marked, variant, ...other } = props;
 
   return (
@@ -56,7 +56,7 @@ function Typography(props) {
       ) : null}
     </MuiTypography>
   );
-}
+};
 
 Typography.propTypes = {
   children: PropTypes.node,
