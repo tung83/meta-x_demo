@@ -1,38 +1,62 @@
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-
+import { Fragment } from 'react';
 import PrimaryButton from '../../components/Buttton/PrimaryButton';
 import OutlineButton from '../../components/Buttton/OutlineButton';
 import ContainedButton from '../../components/Buttton/ContainedButton';
 import PrimaryInput from '../../components/Input/PrimaryInput';
 import PrimarySlider from '../../components/Slider/PrimarySlider';
 
-import { useQuery } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
+import axios from 'axios';
 
-const getPosts = async () => {
-  const response = await fetch(
-    'https://avl-frontend-exam.herokuapp.com/api/users/all?page=1&pageSize=10'
+const fetchProjects = async ({ pageParam = 1 }) => {
+  const res = await axios.get(
+    'https://avl-frontend-exam.herokuapp.com/api/users/all?pageSize=10&page=' + pageParam
   );
-  return response.json();
+  const { data, page, totalPages } = res.data;
+  return { data, nextPage: page < totalPages ? page + 1 : undefined };
 };
 const GuidePge = () => {
-  const { data, isFetching, isLoading, error, isError } = useQuery('key_unique', getPosts);
-  console.log(data, 'test');
-  if (isLoading) {
+  const { data, error, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
+    useInfiniteQuery('projects', fetchProjects, {
+      getNextPageParam: (lastPage) => lastPage.nextPage
+    });
+  if (status === 'loading') {
     return <div>loading...</div>; // loading data
   }
 
-  if (isError) {
+  if (status === 'error') {
     return <div>{error.message}</div>; // error data
   }
   return (
     <Stack spacing={2} direction="column">
-      <ul>
-        {data?.data?.map((d) => (
-          <li key={`post-${d.id}`}>{d.name}</li>
-        ))}
-      </ul>
-      {isFetching && <p>updating...</p>}
+      {data.pages.map((group, i) => {
+        return (
+          <Fragment key={i}>
+            {group.data.map((user) => (
+              <p key={user.id}>{user.name}</p>
+            ))}
+          </Fragment>
+        );
+      })}
+      {data.pages.map((group, i) => (
+        <Fragment key={i}>
+          {group?.data?.map((user) => (
+            <p key={user.id}>{user.name}</p>
+          ))}
+        </Fragment>
+      ))}
+      <div>
+        <button onClick={() => fetchNextPage()} disabled={!hasNextPage || isFetchingNextPage}>
+          {isFetchingNextPage
+            ? 'Loading more...'
+            : hasNextPage
+            ? 'Load More'
+            : 'Nothing more to load'}
+        </button>
+      </div>
+      <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
       <Button variant="text">Text</Button>
       <Button variant="contained">Contained</Button>
       <Button variant="outlined">Outlined</Button>
