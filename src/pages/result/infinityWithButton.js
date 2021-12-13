@@ -35,7 +35,7 @@ const GuidePge = () => {
         return (
           <Fragment key={i}>
             {group.data.map((user) => (
-              <p key={user.id}>{user.name}</p>
+              <div key={user.id}>{user.name}</div>
             ))}
           </Fragment>
         );
@@ -43,7 +43,7 @@ const GuidePge = () => {
       {data.pages.map((group, i) => (
         <Fragment key={i}>
           {group?.data?.map((user) => (
-            <p key={user.id}>{user.name}</p>
+            <div key={user.id}>{user.name}</div>
           ))}
         </Fragment>
       ))}

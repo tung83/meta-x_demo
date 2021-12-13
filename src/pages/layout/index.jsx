@@ -39,7 +39,8 @@ const LayoutPage = () => {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           minHeight: '100vh',
           flexGrow: 1,
-          p: 3,
+          pl: 3,
+          pb: 3,
           ml: { sm: `${drawerWidth}px` }
         }}>
         <Suspense
