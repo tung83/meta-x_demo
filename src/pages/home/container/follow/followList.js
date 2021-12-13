@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import PropTypes from 'prop-types';
@@ -8,6 +8,7 @@ import { makeStyles } from '@mui/styles';
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: 'calc(100vh - 150px)!important',
     '& .ScrollbarsCustom-Track': {
       backgroundColor: `${theme.palette.white.main}!important`
     }
@@ -17,7 +18,7 @@ const FollowList = ({ queryKey, queryFn }) => {
   const { data, error, fetchNextPage, hasNextPage, status } = useInfiniteQuery(queryKey, queryFn, {
     getNextPageParam: (lastPage) => lastPage.nextPage
   });
-  // eslint-disable-next-line no-unused-vars
+  const scrollParentRef = useRef(null);
   const classes = useStyles();
   if (status === 'loading') {
     return <div>loading...</div>; // loading data
@@ -27,7 +28,7 @@ const FollowList = ({ queryKey, queryFn }) => {
     return <div>{error.message}</div>; // error data
   }
   return (
-    <Scrollbar className={classes.root} style={{ height: 'calc(100vh - 150px)' }}>
+    <Scrollbar ref={scrollParentRef} className={classes.root} style={{}}>
       <InfiniteScroll
         hasMore={hasNextPage}
         loadMore={fetchNextPage}
@@ -36,6 +37,7 @@ const FollowList = ({ queryKey, queryFn }) => {
             Loading ...
           </div>
         }
+        getScrollParent={() => scrollParentRef.current?.scrollerElement}
         useWindow={false}>
         {data.pages.map((group, i) => {
           return (

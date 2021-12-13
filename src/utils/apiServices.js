@@ -1,7 +1,7 @@
 import axios from './api';
 export const pagingFetch = async (url, pageParam = 1) => {
-  const res = await axios.get(`${url}${pageParam}`);
-  const { data, page, totalPages } = res.data;
+  const { data: dataResult } = await axios.get(`${url}${pageParam}`);
+  const { data, page, totalPages } = dataResult;
   return { data, nextPage: page < totalPages ? page + 1 : undefined };
 };
 
