@@ -5,8 +5,12 @@ import FollowList from './followList';
 import { userPagingFetch, followingPagingFetch } from '../../../../utils/apiServices';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  sidebar: {
     width: theme.typography.pxToRem(220)
+  },
+  sidebarMain: {
+    position: 'sticky',
+    top: 0
   }
 }));
 const tabs = [
@@ -18,6 +22,12 @@ const tabs = [
 ];
 const Follow = () => {
   const classes = useStyles();
-  return <Tabs tabs={tabs} classNames={classes.root} />;
+  return (
+    <aside className={classes.sidebar}>
+      <div className={classes.sidebarMain}>
+        <Tabs tabs={tabs} />
+      </div>
+    </aside>
+  );
 };
 export default Follow;

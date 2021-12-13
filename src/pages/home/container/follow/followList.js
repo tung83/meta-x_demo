@@ -1,13 +1,24 @@
-import Box from '@mui/material/Box';
 import { Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import PropTypes from 'prop-types';
+import { Scrollbar } from 'react-scrollbars-custom';
+import { makeStyles } from '@mui/styles';
 
+// eslint-disable-next-line no-unused-vars
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .ScrollbarsCustom-Track': {
+      backgroundColor: `${theme.palette.white.main}!important`
+    }
+  }
+}));
 const FollowList = ({ queryKey, queryFn }) => {
   const { data, error, fetchNextPage, hasNextPage, status } = useInfiniteQuery(queryKey, queryFn, {
     getNextPageParam: (lastPage) => lastPage.nextPage
   });
+  // eslint-disable-next-line no-unused-vars
+  const classes = useStyles();
   if (status === 'loading') {
     return <div>loading...</div>; // loading data
   }
@@ -16,12 +27,7 @@ const FollowList = ({ queryKey, queryFn }) => {
     return <div>{error.message}</div>; // error data
   }
   return (
-    <Box
-      direction="column"
-      sx={{
-        maxHeight: 'calc(100vh - 150px)',
-        overflowY: 'auto'
-      }}>
+    <Scrollbar className={classes.root} style={{ height: 'calc(100vh - 150px)' }}>
       <InfiniteScroll
         hasMore={hasNextPage}
         loadMore={fetchNextPage}
@@ -41,7 +47,7 @@ const FollowList = ({ queryKey, queryFn }) => {
           );
         })}
       </InfiniteScroll>
-    </Box>
+    </Scrollbar>
   );
 };
 FollowList.propTypes = {

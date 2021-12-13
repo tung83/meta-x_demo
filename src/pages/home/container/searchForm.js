@@ -11,7 +11,7 @@ const pageSizeRange = [3, 6, 9, 12, 15, 50];
 const SearchForm = () => {
   const [pageSize, setPageSize] = useState(pageSizeRange[0]);
   return (
-    <Stack spacing={2} direction="column" flex={1} height={'calc(100vh - 100px)'}>
+    <Stack spacing={2} direction="column" flex={1}>
       <LargeHeading>Search</LargeHeading>
       <PrimaryInput placeholder="keyword" />
       <Divider />
