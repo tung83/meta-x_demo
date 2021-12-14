@@ -1,4 +1,6 @@
 import axios from './api';
+import { replaceImages } from './mockImages';
+
 export const pagingFetch = async (url, pageParam = 1) => {
   const { data: dataResult } = await axios.get(`${url}${pageParam}`);
   const { data, page, totalPages } = dataResult;
@@ -6,9 +8,10 @@ export const pagingFetch = async (url, pageParam = 1) => {
 };
 
 export const userPagingFetch = async ({ pageParam = 1 }) => {
-  return pagingFetch('users/all?pageSize=10&page=', pageParam);
+  const result = await pagingFetch('users/all?pageSize=10&page=', pageParam);
+  return replaceImages(result);
 };
 
 export const followingPagingFetch = async ({ pageParam = 1 }) => {
-  return pagingFetch('users/friends?pageSize=10&page=', pageParam);
+  return await pagingFetch('users/friends?pageSize=10&page=', pageParam);
 };

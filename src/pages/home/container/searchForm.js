@@ -35,7 +35,7 @@ const SearchForm = () => {
       <Divider />
       <Box flex={1} />
       <PrimaryButton
-        onClick={() => navigate(`/result/${searchText}/${pageSize}`)}
+        onClick={() => navigate(`/result/${searchText || 'all'}/${pageSize}`)}
         sx={{ maxWidth: '343px' }}>
         Search
       </PrimaryButton>

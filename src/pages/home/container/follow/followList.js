@@ -4,6 +4,7 @@ import { useInfiniteQuery } from 'react-query';
 import PropTypes from 'prop-types';
 import { Scrollbar } from 'react-scrollbars-custom';
 import { makeStyles } from '@mui/styles';
+import FollowItem from '../../../../components/Follow/FollowItem';
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +44,7 @@ const FollowList = ({ queryKey, queryFn }) => {
           return (
             <Fragment key={i}>
               {group.data.map((user) => (
-                <div key={user.id}>{user.name}</div>
+                <FollowItem key={user.id} item={user} />
               ))}
             </Fragment>
           );

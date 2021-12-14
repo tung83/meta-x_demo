@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
-const PrimaryButton = styled(Button)(({ theme }) => {
+const OutlineButton = styled(Button)(({ theme }) => {
   return {
     ...theme.typography.secondary,
     height: theme.typography.pxToRem(29),
@@ -26,4 +26,4 @@ const PrimaryButton = styled(Button)(({ theme }) => {
     }
   };
 });
-export default PrimaryButton;
+export default OutlineButton;

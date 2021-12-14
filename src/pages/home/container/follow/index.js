@@ -6,7 +6,7 @@ import { userPagingFetch, followingPagingFetch } from '../../../../utils/apiServ
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {
-    width: theme.typography.pxToRem(220)
+    width: theme.typography.pxToRem(360)
   },
   sidebarMain: {
     position: 'sticky',
