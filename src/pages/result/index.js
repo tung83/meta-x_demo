@@ -5,9 +5,12 @@ import { useParams } from 'react-router-dom';
 import { userPagingFetch } from '../../utils/apiServices';
 import InfiniteScrollStandard from '../../components/List/InfiniteScrollStandard';
 import ImageList from '@mui/material/ImageList';
+import { isMobileScreen } from '../../utils/screen';
+import Follow from '../../container/follow';
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../404'));
 
 const GuidePge = () => {
+  const isMobile = isMobileScreen();
   const { pagesize, key } = useParams();
   console.log(pagesize, key);
   let pagesizeMatches = pagesize.match(/\d+/);
@@ -15,9 +18,8 @@ const GuidePge = () => {
     return <NotFound />;
   }
   const renderItems = (items) => {
-    console.log(items, 'taaaaaaaaa');
     return (
-      <ImageList cols={3} gap={8}>
+      <ImageList cols={isMobile ? 2 : 3} gap={8}>
         {items.map((user) => (
           <ImageItem key={user.id} item={user}></ImageItem>
         ))}
@@ -25,12 +27,15 @@ const GuidePge = () => {
     );
   };
   return (
-    <Stack spacing={2} direction="column">
-      <InfiniteScrollStandard
-        queryKey="users"
-        queryFn={userPagingFetch}
-        renderItems={renderItems}
-      />
+    <Stack spacing={2} direction="row">
+      <Stack direction="column" flex={1}>
+        <InfiniteScrollStandard
+          queryKey="users"
+          queryFn={userPagingFetch}
+          renderItems={renderItems}
+        />
+      </Stack>
+      {!isMobile && <Follow />}
     </Stack>
   );
 };

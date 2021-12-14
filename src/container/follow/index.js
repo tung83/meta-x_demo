@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import Tabs from '../../../../components/Tabs';
+import Tabs from '../../components/Tabs';
 import FollowList from './followList';
-import { userPagingFetch, followingPagingFetch } from '../../../../utils/apiServices';
+import { userPagingFetch, followingPagingFetch } from '../../utils/apiServices';
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {
