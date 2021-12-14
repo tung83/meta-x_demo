@@ -3,13 +3,13 @@ import Stack from '@mui/material/Stack';
 import ImageItem from '../../components/Card/ImageItem';
 import { useParams } from 'react-router-dom';
 import { userPagingFetch } from '../../utils/apiServices';
-import InfiniteScrollStandard from '../../components/List/InfiniteScrollStandard';
+import InfiniteScrollStandard from '../../container/List/InfiniteScrollStandard';
 import ImageList from '@mui/material/ImageList';
 import { isMobileScreen } from '../../utils/screen';
 import Follow from '../../container/follow';
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../404'));
 
-const GuidePge = () => {
+const ResultPage = () => {
   const isMobile = isMobileScreen();
   const { pagesize, key } = useParams();
   console.log(pagesize, key);
@@ -39,4 +39,4 @@ const GuidePge = () => {
     </Stack>
   );
 };
-export default GuidePge;
+export default ResultPage;
