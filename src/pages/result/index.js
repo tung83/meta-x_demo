@@ -6,7 +6,7 @@ import { userPagingFetch } from '../../utils/apiServices';
 import InfiniteScrollStandard from '../../container/List/InfiniteScrollStandard';
 import ImageList from '@mui/material/ImageList';
 import { isMobileScreen } from '../../utils/screen';
-import Follow from '../../container/follow';
+import Follow from '../../container/Follow';
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../404'));
 
 const ResultPage = () => {

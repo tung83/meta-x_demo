@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 import Tabs from '../../components/Tabs';
-import FollowList from './followList';
+import FollowList from './FollowList';
 import { userPagingFetch, followingPagingFetch } from '../../utils/apiServices';
 
 const useStyles = makeStyles((theme) => ({
