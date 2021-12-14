@@ -1,4 +1,3 @@
-import { lazy } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Fragment } from 'react';
@@ -8,11 +7,9 @@ import ContainedButton from '../../components/Button/ContainedButton';
 import PrimaryInput from '../../components/Input/PrimaryInput';
 import PrimarySlider from '../../components/Slider/PrimarySlider';
 import InfiniteScroll from 'react-infinite-scroller';
-import { useParams } from 'react-router-dom';
 
 import { useInfiniteQuery } from 'react-query';
 import axios from 'axios';
-const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../404'));
 
 const fetchProjects = async ({ pageParam = 1 }) => {
   const res = await axios.get(
@@ -22,11 +19,6 @@ const fetchProjects = async ({ pageParam = 1 }) => {
   return { data, nextPage: page < totalPages ? page + 1 : undefined };
 };
 const GuidePge = () => {
-  const { pagesize, key } = useParams();
-  let pagesizeMatches = pagesize.match(/\d+/);
-  if (!pagesizeMatches) {
-    return <NotFound />;
-  }
   const { data, error, fetchNextPage, hasNextPage, status } = useInfiniteQuery(
     'projects',
     fetchProjects,
@@ -43,9 +35,6 @@ const GuidePge = () => {
   }
   return (
     <Stack spacing={2} direction="column">
-      <div>
-        {key} {pagesize}
-      </div>
       <InfiniteScroll hasMore={hasNextPage} loadMore={fetchNextPage}>
         {data.pages.map((group, i) => {
           return (

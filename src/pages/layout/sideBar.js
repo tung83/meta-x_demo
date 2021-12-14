@@ -58,7 +58,7 @@ const SideBar = ({ drawerWidth }) => {
       open>
       <>
         <Link
-          href="#"
+          href="/"
           underline="none"
           sx={(theme) => ({
             margin: `${theme.typography.pxToRem(37)} ${theme.typography.pxToRem(10)}`
