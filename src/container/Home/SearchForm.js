@@ -14,7 +14,14 @@ const SearchForm = () => {
   const [searchText, setSearchText] = useState('');
   let navigate = useNavigate();
   return (
-    <Stack spacing={2} direction="column" flex={1}>
+    <Stack
+      spacing={2}
+      direction="column"
+      flex={1}
+      sx={{
+        height: 'fit-content',
+        minHeight: { xs: `calc(100vh - 100px)` }
+      }}>
       <LargeHeading>Search</LargeHeading>
       <PrimaryInput
         placeholder="keyword"
@@ -36,7 +43,7 @@ const SearchForm = () => {
       <Box flex={1} />
       <PrimaryButton
         onClick={() => navigate(`/result/${searchText || 'all'}/${pageSize}`)}
-        sx={{ maxWidth: '343px' }}>
+        sx={{ maxWidth: { sm: '343px' } }}>
         Search
       </PrimaryButton>
     </Stack>

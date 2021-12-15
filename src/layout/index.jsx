@@ -21,12 +21,7 @@ const LayoutPage = () => {
       sx={{
         minHeight: '100vh'
       }}>
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` }
-        }}>
+      <AppBar>
         <SideBar drawerWidth={drawerWidth}></SideBar>
         <MobileNavBar />
       </AppBar>
@@ -37,8 +32,7 @@ const LayoutPage = () => {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           minHeight: '100vh',
           flexGrow: 1,
-          pl: 3,
-          pb: 3,
+          padding: { xs: '0 24px', sm: '10px 0 10px 0' },
           ml: { sm: `${drawerWidth}px` }
         }}>
         <Suspense

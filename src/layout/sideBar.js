@@ -3,8 +3,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import logo from '../../resources/logo.svg';
-import homeIcon from '../../resources/homeIcon.svg';
+import logo from '../resources/logo.svg';
+import homeIcon from '../resources/homeIcon.svg';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
@@ -59,8 +59,11 @@ const SideBar = ({ drawerWidth }) => {
 
   return (
     <Drawer
+      position="fixed"
       variant="permanent"
       sx={{
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { sm: `${drawerWidth}px` },
         display: { xs: 'none', sm: 'block' },
         alignItems: 'center',
         '& .MuiDrawer-paper': {

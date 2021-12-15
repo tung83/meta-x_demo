@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import LayoutPage from '../pages/layout';
+import LayoutPage from '../layout';
 import WrapperRouteComponent from './config';
 import { useRoutes } from 'react-router-dom';
 

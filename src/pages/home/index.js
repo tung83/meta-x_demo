@@ -6,7 +6,12 @@ import { isMobileScreen } from '../../utils/screen';
 const GuidePge = () => {
   const isMobile = isMobileScreen();
   return (
-    <Stack ml={2} mb={2} direction="row">
+    <Stack
+      sx={{
+        padding: { xs: '0', sm: '10px 0 10px 0' },
+        height: '100vh'
+      }}
+      direction="row">
       <SearchForm />
       {!isMobile && <Follow />}
     </Stack>
