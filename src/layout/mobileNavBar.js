@@ -16,13 +16,8 @@ const useStyles = makeStyles(() => ({
     minMidth: '70px'
   }
 }));
-const TopMobileNav = () => {
-  const location = useLocation();
-  const [isHome, setIsHome] = useState(true);
+const TopMobileNav = ({ isHome }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    setIsHome(location.pathname === '/home');
-  }, [location]);
   const handleBackClicked = () => {
     navigate('/home');
   };
@@ -34,7 +29,7 @@ const TopMobileNav = () => {
         </div>
       ) : (
         <div onClick={handleBackClicked}>
-          <span>{'<'}</span>Home Page
+          <span>{'< '}</span>Home Page
         </div>
       )}
     </Toolbar>
@@ -44,29 +39,27 @@ const TopMobileNav = () => {
 TopMobileNav.propTypes = {
   isHome: PropTypes.bool
 };
-const MobileNavBar = () => {
+const BottomNav = () => {
   const classes = useStyles();
-
-  const BottomNav = () => (
+  return (
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
       <BottomNavigation sx={{ backgroundColor: '#181818', display: { sm: 'none' } }} showLabels>
-        <BottomNavigationAction
-          className={classes.bottomNav}
-          label="Recents"
-          icon={<FavoriteIcon />}
-        />
-        <BottomNavigationAction
-          className={classes.bottomNav}
-          label="Favorites"
-          icon={<LocationOnIcon />}
-        />
+        <BottomNavigationAction className={classes.bottomNav} icon={<FavoriteIcon />} />
+        <BottomNavigationAction className={classes.bottomNav} icon={<LocationOnIcon />} />
       </BottomNavigation>
     </Paper>
   );
+};
+const MobileNavBar = () => {
+  const location = useLocation();
+  const [isHome, setIsHome] = useState(true);
+  useEffect(() => {
+    setIsHome(location.pathname === '/home');
+  }, [location]);
   return (
     <div>
-      <TopMobileNav />
-      <BottomNav />
+      <TopMobileNav isHome={isHome} />
+      {isHome && <BottomNav />}
     </div>
   );
 };
