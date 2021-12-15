@@ -52,7 +52,7 @@ TagItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
-    count: PropTypes.bool
+    count: PropTypes.number
   })
 };
 

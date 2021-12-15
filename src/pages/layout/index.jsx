@@ -13,7 +13,7 @@ const LayoutPage = () => {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      navigate('/dashboard');
+      navigate('/home');
     }
   }, [navigate, location]);
   return (

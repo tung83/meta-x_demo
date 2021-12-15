@@ -4,7 +4,7 @@ import WrapperRouteComponent from './config';
 import { useRoutes } from 'react-router-dom';
 
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../pages/404'));
-const Guide = lazy(() => import(/* webpackChunkName: "guide'"*/ '../pages/home'));
+const Home = lazy(() => import(/* webpackChunkName: "home'"*/ '../pages/home'));
 const Tags = lazy(() => import(/* webpackChunkName: "output'"*/ '../pages/tags'));
 const Result = lazy(() => import(/* webpackChunkName: "result'"*/ '../pages/result/index'));
 
@@ -14,8 +14,8 @@ const routeList = [
     element: <WrapperRouteComponent element={<LayoutPage />} titleId="" />,
     children: [
       {
-        path: 'dashboard',
-        element: <WrapperRouteComponent element={<Guide />} titleId="title.guide" />
+        path: 'home',
+        element: <WrapperRouteComponent element={<Home />} titleId="title.home" />
       },
       {
         path: 'tags',

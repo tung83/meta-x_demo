@@ -5,45 +5,58 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import logo from '../../resources/logo.svg';
 import homeIcon from '../../resources/homeIcon.svg';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@mui/styles';
 
 const menuItems = [
   { name: 'Home', href: '/home', icon: homeIcon },
   { name: 'Tags', href: '/tags', icon: homeIcon }
 ];
-const listItems = (
-  <div>
-    {menuItems.map((item) => (
-      <ListItem
-        button
-        key={item.name}
-        sx={{
-          flexDirection: 'column',
-          alignItems: 'center',
-          '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.4)'
-          }
-        }}>
-        <Link
-          href={item.href}
-          underline="none"
-          sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <ListItemIcon sx={{ minWidth: 'auto' }}>
-            <img src={item.icon} alt="logo" />
-          </ListItemIcon>
-          <ListItemText
-            sx={{
-              color: 'primary.main'
-            }}
-            primary={item.name}
-          />
-        </Link>
-      </ListItem>
-    ))}
-  </div>
-);
+
+const useStyles = makeStyles((theme) => ({
+  linkItem: {
+    textDecoration: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  topLink: {
+    textDecoration: 'none',
+    margin: `${theme.typography.pxToRem(37)} ${theme.typography.pxToRem(10)}`
+  }
+}));
 const SideBar = ({ drawerWidth }) => {
+  const classes = useStyles();
+  const listItems = () => (
+    <div>
+      {menuItems.map((item) => (
+        <ListItem
+          button
+          key={item.name}
+          sx={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            '&:hover': {
+              backgroundColor: 'rgba(0, 0, 0, 0.4)'
+            }
+          }}>
+          <Link to={item.href} className={classes.linkItem}>
+            <ListItemIcon sx={{ minWidth: 'auto' }}>
+              <img src={item.icon} alt="logo" />
+            </ListItemIcon>
+            <ListItemText
+              sx={{
+                color: 'primary.main'
+              }}
+              primary={item.name}
+            />
+          </Link>
+        </ListItem>
+      ))}
+    </div>
+  );
+
   return (
     <Drawer
       variant="permanent"
@@ -61,15 +74,10 @@ const SideBar = ({ drawerWidth }) => {
       }}
       open>
       <>
-        <Link
-          href="/"
-          underline="none"
-          sx={(theme) => ({
-            margin: `${theme.typography.pxToRem(37)} ${theme.typography.pxToRem(10)}`
-          })}>
+        <Link to="/" className={classes.topLink}>
           <img src={logo} alt="logo" />
         </Link>
-        <List sx={{ width: '100%' }}>{listItems}</List>
+        <List sx={{ width: '100%' }}>{listItems()}</List>
       </>
     </Drawer>
   );
