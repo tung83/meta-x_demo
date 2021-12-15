@@ -5,20 +5,19 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import logo from '../../resources/logo.svg';
 import homeIcon from '../../resources/homeIcon.svg';
-import { makeStyles } from '@mui/styles';
 import Link from '@mui/material/Link';
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line no-unused-vars
-const useStyles = makeStyles((theme) => ({
-  logo: {}
-}));
+const menuItems = [
+  { name: 'Home', href: '/home', icon: homeIcon },
+  { name: 'Tags', href: '/tags', icon: homeIcon }
+];
 const listItems = (
   <div>
-    {['Home', 'Tags'].map((text) => (
+    {menuItems.map((item) => (
       <ListItem
         button
-        key={text}
+        key={item.name}
         sx={{
           flexDirection: 'column',
           alignItems: 'center',
@@ -26,15 +25,20 @@ const listItems = (
             backgroundColor: 'rgba(0, 0, 0, 0.4)'
           }
         }}>
-        <ListItemIcon sx={{ minWidth: 'auto' }}>
-          <img src={homeIcon} alt="logo" />
-        </ListItemIcon>
-        <ListItemText
-          sx={{
-            color: 'primary.main'
-          }}
-          primary={text}
-        />
+        <Link
+          href={item.href}
+          underline="none"
+          sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <ListItemIcon sx={{ minWidth: 'auto' }}>
+            <img src={item.icon} alt="logo" />
+          </ListItemIcon>
+          <ListItemText
+            sx={{
+              color: 'primary.main'
+            }}
+            primary={item.name}
+          />
+        </Link>
       </ListItem>
     ))}
   </div>

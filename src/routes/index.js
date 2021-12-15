@@ -5,7 +5,7 @@ import { useRoutes } from 'react-router-dom';
 
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../pages/404'));
 const Guide = lazy(() => import(/* webpackChunkName: "guide'"*/ '../pages/home'));
-const Output = lazy(() => import(/* webpackChunkName: "output'"*/ '../pages/output'));
+const Tags = lazy(() => import(/* webpackChunkName: "output'"*/ '../pages/tags'));
 const Result = lazy(() => import(/* webpackChunkName: "result'"*/ '../pages/result/index'));
 
 const routeList = [
@@ -18,8 +18,8 @@ const routeList = [
         element: <WrapperRouteComponent element={<Guide />} titleId="title.guide" />
       },
       {
-        path: 'output',
-        element: <WrapperRouteComponent element={<Output />} titleId="title.output" />
+        path: 'tags',
+        element: <WrapperRouteComponent element={<Tags />} titleId="title.tags" />
       },
       {
         path: 'result/:key/:pagesize',

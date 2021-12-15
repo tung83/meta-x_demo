@@ -13,6 +13,9 @@ const theme = createTheme({
       styleOverrides: {
         '*, *::before, *::after': {
           color: '#fff'
+        },
+        body: {
+          backgroundColor: '#181818'
         }
       }
     },

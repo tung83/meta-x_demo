@@ -15,3 +15,7 @@ export const userPagingFetch = async ({ pageParam = 1 }) => {
 export const followingPagingFetch = async ({ pageParam = 1 }) => {
   return await pagingFetch('users/friends?pageSize=10&page=', pageParam);
 };
+
+export const tagsFetchAll = async () => {
+  return await axios.get('/tags');
+};

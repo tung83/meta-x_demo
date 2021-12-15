@@ -49,8 +49,7 @@ FollowItem.propTypes = {
     isFollowing: PropTypes.bool,
     name: PropTypes.string,
     username: PropTypes.string
-  }),
-  onValueChanged: PropTypes.func
+  })
 };
 
 export default FollowItem;

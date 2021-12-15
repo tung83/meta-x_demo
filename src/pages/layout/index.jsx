@@ -19,15 +19,13 @@ const LayoutPage = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'grey.dark',
         minHeight: '100vh'
       }}>
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          backgroundColor: 'grey.dark'
+          ml: { sm: `${drawerWidth}px` }
         }}>
         <SideBar drawerWidth={drawerWidth}></SideBar>
         <MobileNavBar />
