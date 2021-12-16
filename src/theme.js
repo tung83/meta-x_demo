@@ -7,6 +7,7 @@ const htmlFontSize = 16;
 const coef = fontSize / 14;
 const pxToRem = (size) => `${(size / htmlFontSize) * coef}rem`;
 const theme = createTheme({
+  spacing: 4,
   components: {
     // Name of the component ⚛️
     MuiCssBaseline: {
@@ -28,7 +29,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           opacity: 0.1,
-          borderColor: '#FFFFFF'
+          borderColor: '#FFFFFF',
+          margin: '30px 0'
         }
       }
     }

@@ -12,18 +12,20 @@ const pageSizeRange = [3, 6, 9, 12, 15, 50];
 const SearchForm = () => {
   const [pageSize, setPageSize] = useState(pageSizeRange[0]);
   const [searchText, setSearchText] = useState('');
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const navToResult = () => navigate(`/result/${searchText || 'all'}/${pageSize}`);
   return (
     <Stack
-      spacing={2}
       direction="column"
       flex={1}
       sx={{
         height: 'fit-content',
-        minHeight: { xs: `calc(100vh - 90px)`, padding: { xs: '0 60px', md: '0 130px' } }
+        minHeight: { xs: `calc(100vh - 90px)` },
+        padding: { sx: '20px', sm: '0 40px', lg: '54px 130px 0' }
       }}>
       <LargeHeading>Search</LargeHeading>
       <PrimaryInput
+        sx={{ marginTop: '20px' }}
         placeholder="keyword"
         value={searchText}
         onChange={(event) => {
@@ -32,18 +34,19 @@ const SearchForm = () => {
       />
       <Divider />
       <LargeHeading># of results per page</LargeHeading>
-      <Typography variant="h2" component="h2">
-        {pageSize}{' '}
-        <Typography variant="span" component="span">
+      <Typography variant="h3" component="h3" sx={{ fontWeight: 700, marginTop: '20px' }}>
+        {`${pageSize} `}
+        <Typography variant="span" component="span" sx={{ fontSize: 16, fontWeight: 400 }}>
           results
         </Typography>
       </Typography>
-      <PrimarySlider onValueChanged={setPageSize} inputMarks={pageSizeRange}></PrimarySlider>
+      <PrimarySlider
+        onValueChanged={setPageSize}
+        inputMarks={pageSizeRange}
+        styles={{ marginTop: '14px' }}></PrimarySlider>
       <Divider />
       <Box flex={1} />
-      <PrimaryButton
-        onClick={() => navigate(`/result/${searchText || 'all'}/${pageSize}`)}
-        sx={{ maxWidth: { sm: '343px' } }}>
+      <PrimaryButton onClick={navToResult} sx={{ maxWidth: { sm: '343px' } }}>
         Search
       </PrimaryButton>
     </Stack>

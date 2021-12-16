@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@mui/material/Slider';
 import { makeStyles } from '@mui/styles';
@@ -23,7 +23,11 @@ const useStyles = makeStyles((theme) => ({
       border: `${theme.typography.pxToRem(6)} solid #FFD05D`
     },
     '& .MuiSlider-markLabel': {
-      color: theme.palette.white.main
+      color: theme.palette.white.main,
+      opacity: 0.5
+    },
+    '& .MuiSlider-markLabelActive:nth-first-of-type(2)': {
+      opacity: 1
     }
   },
   'MuiSlider-thumbSizeMedium': {
@@ -32,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const PrimarySlider = ({ inputMarks = [], onValueChanged = () => {} }) => {
+const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) => {
   const [marks, setMarks] = useState([]);
+  const sliderRef = useRef(null);
   useEffect(() => {
     setMarks(
       inputMarks.map((value, index) => ({
@@ -48,12 +53,25 @@ const PrimarySlider = ({ inputMarks = [], onValueChanged = () => {} }) => {
   const valueLabelFormat = (value) => {
     return marks.findIndex((mark) => mark.value === value) + 1;
   };
+  const updateActiveLabel = () => {
+    const allMarks = sliderRef?.current?.querySelectorAll('.MuiSlider-markLabel');
+    allMarks.forEach((mark) => {
+      mark.style.opacity = 0.5;
+    });
+    const activeMarks = sliderRef?.current?.querySelectorAll('.MuiSlider-markLabelActive');
+
+    if (activeMarks?.length > 0) {
+      activeMarks[activeMarks.length - 1].style.opacity = 1;
+    }
+  };
   const handleSliderChange = (_event, newValue) => {
     onValueChanged(marks[newValue]?.realValue);
+    setTimeout(updateActiveLabel, 10);
   };
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={styles}>
       <Slider
+        ref={sliderRef}
         aria-label="Custom marks"
         step={null}
         max={marks.length - 1}
@@ -67,6 +85,7 @@ const PrimarySlider = ({ inputMarks = [], onValueChanged = () => {} }) => {
 };
 
 PrimarySlider.propTypes = {
+  styles: PropTypes.object,
   inputMarks: PropTypes.arrayOf(PropTypes.number).isRequired,
   onValueChanged: PropTypes.func
 };
