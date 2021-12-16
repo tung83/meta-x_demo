@@ -26,13 +26,13 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.white.main,
       opacity: 0.5
     },
-    '& .MuiSlider-markLabelActive:nth-first-of-type(2)': {
+    '& .MuiSlider-markLabelActive': {
       opacity: 1
     }
   },
   'MuiSlider-thumbSizeMedium': {
-    width: theme.typography.pxToRem(20),
-    height: theme.typography.pxToRem(20)
+    width: '20px',
+    height: '20px'
   }
 }));
 

@@ -22,7 +22,7 @@ const routeList = [
         element: <WrapperRouteComponent element={<Tags />} titleId="title.tags" />
       },
       {
-        path: 'result/:key/:pagesize',
+        path: 'result/:keyword/:pageSize',
         element: <WrapperRouteComponent element={<Result />} titleId="title.result" />
       },
       {

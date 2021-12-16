@@ -7,8 +7,11 @@ export const pagingFetch = async (url, pageParam = 1) => {
   return { data, nextPage: page < totalPages ? page + 1 : undefined };
 };
 
-export const userPagingFetch = async ({ pageParam = 1 }) => {
-  const result = await pagingFetch('users/all?pageSize=10&page=', pageParam);
+export const userPagingFetch = async ({ pageParam = 1, pageSize = 10, keyword = '' }) => {
+  const result = await pagingFetch(
+    `users/all?pageSize=${pageSize}&keyword=${keyword === 'all' ? '' : keyword}&page=`,
+    pageParam
+  );
   return replaceImages(result);
 };
 

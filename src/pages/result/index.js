@@ -11,10 +11,9 @@ const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../404'));
 
 const ResultPage = () => {
   const isMobile = isMobileScreen();
-  const { pagesize, key } = useParams();
-  console.log(pagesize, key);
-  let pagesizeMatches = pagesize.match(/\d+/);
-  if (!pagesizeMatches) {
+  const { pageSize, keyword } = useParams();
+  let pageSizeMatches = pageSize.match(/\d+/);
+  if (!pageSizeMatches) {
     return <NotFound />;
   }
   const renderItems = (items) => {
@@ -31,7 +30,7 @@ const ResultPage = () => {
       <Stack direction="column" flex={1}>
         <InfiniteScrollStandard
           queryKey="users"
-          queryFn={userPagingFetch}
+          queryFn={(pageParam) => userPagingFetch({ ...pageParam, pageSize, keyword })}
           renderItems={renderItems}
         />
       </Stack>
