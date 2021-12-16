@@ -12,26 +12,43 @@ import Avatar from '@mui/material/Avatar';
 const FollowItem = ({ item }) => {
   return (
     <ListItem
+      sx={{
+        '& .MuiListItemSecondaryAction-root': {}
+      }}
       secondaryAction={
         item.isFollowing ? (
-          <OutlineButton>Following</OutlineButton>
+          <ContainedButton>Following</ContainedButton>
         ) : (
-          <ContainedButton>Follow</ContainedButton>
+          <OutlineButton>Follow</OutlineButton>
         )
       }
       disablePadding>
-      <ListItemButton>
+      <ListItemButton sx={{ padding: '8px 95px 8px 16px!important', width: '100%' }}>
         <ListItemAvatar>
-          <Avatar alt={`follower ${item.id}`} src={item.avater} variant="rounded" />
+          <Avatar
+            alt={`follower ${item.id}`}
+            sx={{ border: '1px solid #F8F8F8', borderRadius: '5px' }}
+            src={item.avater}
+            variant="rounded"
+          />
         </ListItemAvatar>
         <ListItemText
+          sx={{
+            lineHeight: 1.5,
+            margin: 0,
+            '.MuiTypography-root': {
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap'
+            }
+          }}
           primary={item.name}
           secondary={
             <React.Fragment>
               <Typography
-                sx={{ display: 'inline', opacity: '0.5' }}
+                sx={{ display: 'block', opacity: '0.5', fontSize: '14px' }}
                 component="span"
-                variant="body2">
+                noWrap>
                 {`@${item.username}`}
               </Typography>
             </React.Fragment>

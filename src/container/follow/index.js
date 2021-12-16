@@ -4,9 +4,16 @@ import Tabs from '../../components/Tabs';
 import FollowList from './FollowList';
 import { userPagingFetch, followingPagingFetch } from '../../utils/apiServices';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   sidebar: {
-    width: theme.typography.pxToRem(360)
+    width: '375px',
+    paddingTop: '19px',
+    '& .ScrollbarsCustom': {
+      height: 'calc(100vh - 100px)!important'
+    },
+    '& .linearLoading': {
+      margin: '0 17px 0 16px'
+    }
   },
   sidebarMain: {
     position: 'sticky',

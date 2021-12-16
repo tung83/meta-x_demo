@@ -20,7 +20,7 @@ const SearchForm = () => {
       flex={1}
       sx={{
         height: 'fit-content',
-        minHeight: { xs: `calc(100vh - 100px)` }
+        minHeight: { xs: `calc(100vh - 90px)`, padding: { xs: '0 60px', md: '0 130px' } }
       }}>
       <LargeHeading>Search</LargeHeading>
       <PrimaryInput

@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import { Scrollbar } from 'react-scrollbars-custom';
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    height: 'calc(100vh - 150px)!important',
-    '& .ScrollbarsCustom-Track': {
-      backgroundColor: `${theme.palette.white.main}!important`
+    '& .ScrollbarsCustom-Wrapper': {
+      inset: '0!important'
     }
   }
 }));
@@ -17,7 +16,7 @@ const InfiniteScrollListInBlock = ({ queryKey, queryFn, renderItems }) => {
   const classes = useStyles();
 
   return (
-    <Scrollbar ref={scrollParentRef} className={classes.root} style={{}}>
+    <Scrollbar ref={scrollParentRef} className={classes.root}>
       <InfiniteScrollStandard
         queryKey={queryKey}
         queryFn={queryFn}

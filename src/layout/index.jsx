@@ -6,7 +6,7 @@ import MobileNavBar from './mobileNavBar';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 
-const drawerWidth = 150;
+const drawerWidth = 80;
 const LayoutPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,16 +32,10 @@ const LayoutPage = () => {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           minHeight: '100vh',
           flexGrow: 1,
-          padding: { xs: '0 24px', sm: '10px 0 10px 0' },
+          padding: { xs: '0 24px', sm: '0' },
           ml: { sm: `${drawerWidth}px` }
         }}>
-        <Suspense
-          fallback={
-            <SuspendFallbackLoading
-              message="Alert message title"
-              description="Further details about the context of this alert."
-            />
-          }>
+        <Suspense fallback={<SuspendFallbackLoading />}>
           <Outlet />
         </Suspense>
       </Box>

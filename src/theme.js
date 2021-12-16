@@ -15,7 +15,12 @@ const theme = createTheme({
           color: '#fff'
         },
         body: {
-          backgroundColor: '#181818'
+          backgroundColor: '#181818',
+          fontFamily: 'Ubuntu',
+          fontStyle: 'normal',
+          fontWeight: 'normal',
+          fontSize: '1rem',
+          lineHeight: 1.5
         }
       }
     },
@@ -58,14 +63,19 @@ const theme = createTheme({
   },
   typography: {
     pxToRem,
+    fontFamily: 'Ubuntu',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: 16,
+    lineHeight: 1.5,
     default: {
       main: {
         fontFamily: 'Ubuntu, Helvetica, sans-serif',
-        fontSize: pxToRem(16)
+        fontSize: '16px'
       },
       sm: {
         fontFamily: 'Ubuntu, Helvetica, sans-serif',
-        fontSize: pxToRem(14)
+        fontSize: '14px'
       }
     },
     secondary: {

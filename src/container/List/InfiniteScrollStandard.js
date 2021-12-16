@@ -1,13 +1,14 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import PropTypes from 'prop-types';
+import LinearLoading from '../../components/Progress/LinearLoading';
 
 const InfiniteScrollStandard = ({ queryKey, queryFn, renderItems, ...others }) => {
   const { data, error, fetchNextPage, hasNextPage, status } = useInfiniteQuery(queryKey, queryFn, {
     getNextPageParam: (lastPage) => lastPage.nextPage
   });
   if (status === 'loading') {
-    return <div>loading...</div>; // loading data
+    return <LinearLoading />;
   }
 
   if (status === 'error') {
@@ -20,7 +21,7 @@ const InfiniteScrollStandard = ({ queryKey, queryFn, renderItems, ...others }) =
       loadMore={fetchNextPage}
       loader={
         <div className="loader" key={0}>
-          Loading ...
+          <LinearLoading />
         </div>
       }
       {...others}>

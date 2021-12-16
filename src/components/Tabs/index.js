@@ -4,34 +4,48 @@ import TabPanel from './TabPanel';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/styles';
+import { alpha } from '@mui/material/styles';
 
-const useStyles = makeStyles((theme) => ({
-  tab: {
-    color: theme.palette.primary.main,
-    textTransform: 'capitalize'
-  }
-}));
-
-const a11yProps = (index) => {
+function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`
   };
-};
+}
 const PrimaryTabs = ({ tabs, classNames = '' }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (_event, newValue) => {
     setValue(newValue);
   };
-  const classes = useStyles();
+
   return (
     <Box className={classNames} sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          sx={{
+            minHeight: '40px'
+          }}
+          aria-label="basic tabs ">
           {tabs?.map((tab, index) => (
-            <Tab key={index} label={tab.label} {...a11yProps(index)} className={classes.tab} />
+            <Tab
+              key={index}
+              label={tab.label}
+              {...a11yProps(index)}
+              sx={{
+                fontWeight: 700,
+                fontSize: '16px',
+                color: () => alpha('#929292', 0.87),
+                textTransform: 'capitalize',
+                flexGrow: 1,
+                lineHeight: 1.5,
+                padding: '13px 16px 9px 16px',
+                letterSpacing: '0.15px',
+                minHeight: '40px'
+              }}
+            />
           ))}
         </Tabs>
       </Box>

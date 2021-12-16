@@ -8,7 +8,7 @@ const GuidePge = () => {
   return (
     <Stack
       sx={{
-        padding: { xs: '0', sm: '10px 0 10px 0' },
+        padding: { xs: '0', sm: '0' },
         height: '100vh'
       }}
       direction="row">
