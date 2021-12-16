@@ -4,31 +4,34 @@ import TabPanel from './TabPanel';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@mui/styles';
 
-function a11yProps(index) {
+const useStyles = makeStyles((theme) => ({
+  tab: {
+    color: theme.palette.primary.main,
+    textTransform: 'capitalize'
+  }
+}));
+
+const a11yProps = (index) => {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`
   };
-}
+};
 const PrimaryTabs = ({ tabs, classNames = '' }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (_event, newValue) => {
     setValue(newValue);
   };
-
+  const classes = useStyles();
   return (
     <Box className={classNames} sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           {tabs?.map((tab, index) => (
-            <Tab
-              key={index}
-              label={tab.label}
-              {...a11yProps(index)}
-              sx={{ color: 'primary.main' }}
-            />
+            <Tab key={index} label={tab.label} {...a11yProps(index)} className={classes.tab} />
           ))}
         </Tabs>
       </Box>
