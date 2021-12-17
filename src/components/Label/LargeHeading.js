@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 const LargeHeading = ({ styles, children }) => {
   return (
-    <Typography variant="h5" component="h5" sx={{ textTransform: 'capitalize', ...styles }}>
+    <Typography
+      variant="h5"
+      component="h5"
+      sx={{ lineHeight: 1.5, textTransform: 'capitalize', ...styles }}>
       {children}
     </Typography>
   );

@@ -12,7 +12,7 @@ function TabPanel(props) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}>
-      {value === index && <Box sx={{ marginTop: '24px' }}>{children}</Box>}
+      {value === index && <Box sx={{ marginTop: '23px' }}>{children}</Box>}
     </div>
   );
 }

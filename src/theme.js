@@ -83,6 +83,21 @@ const theme = createTheme({
     secondary: {
       fontFamily: 'Open Sans, Helvetica, sans-serif',
       fontSize: pxToRem(12)
+    },
+    h1: {
+      lineHeight: 1.5
+    },
+    h2: {
+      lineHeight: 1.5
+    },
+    h3: {
+      lineHeight: 1.5
+    },
+    h4: {
+      lineHeight: 1.5
+    },
+    h5: {
+      lineHeight: 1.5
     }
   }
 });

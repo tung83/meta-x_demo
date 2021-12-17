@@ -13,7 +13,12 @@ const FollowItem = ({ item }) => {
   return (
     <ListItem
       sx={{
-        '& .MuiListItemSecondaryAction-root': {}
+        '& .MuiListItemSecondaryAction-root': {
+          right: '17px',
+          '& .MuiButton-root': {
+            marginBottom: '2px'
+          }
+        }
       }}
       secondaryAction={
         item.isFollowing ? (

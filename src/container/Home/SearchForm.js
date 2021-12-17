@@ -8,9 +8,16 @@ import PrimarySlider from '../../components/Slider/PrimarySlider';
 import PrimaryButton from '../../components/Button/PrimaryButton';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
-const pageSizeRange = [3, 6, 9, 12, 15, 50];
+const pageSizeRange = [
+  { value: 3, label: '3', realValue: 3 },
+  { value: 6, label: '6', realValue: 6 },
+  { value: 9, label: '9', realValue: 9 },
+  { value: 12, label: '12', realValue: 12 },
+  { value: 15, label: '15', realValue: 15 },
+  { value: 20, label: '50', realValue: 50 }
+];
 const SearchForm = () => {
-  const [pageSize, setPageSize] = useState(pageSizeRange[0]);
+  const [pageSize, setPageSize] = useState(pageSizeRange[0].realValue);
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
   const navToResult = () => navigate(`/result/${searchText || 'all'}/${pageSize}`);
@@ -26,7 +33,7 @@ const SearchForm = () => {
       <LargeHeading>Search</LargeHeading>
       <PrimaryInput
         sx={{ marginTop: '20px' }}
-        placeholder="keyword"
+        placeholder="Keyword"
         value={searchText}
         onChange={(event) => {
           setSearchText(event.target.value);
@@ -34,9 +41,21 @@ const SearchForm = () => {
       />
       <Divider />
       <LargeHeading># of results per page</LargeHeading>
-      <Typography variant="h3" component="h3" sx={{ fontWeight: 700, marginTop: '20px' }}>
+      <Typography
+        variant="h3"
+        component="h3"
+        sx={{ height: '50px', lineHeight: 1.04167, fontWeight: 700, marginTop: '20px' }}>
         {`${pageSize} `}
-        <Typography variant="span" component="span" sx={{ fontSize: 16, fontWeight: 400 }}>
+        <Typography
+          variant="span"
+          component="span"
+          sx={{
+            display: 'inline-block',
+            marginBottom: '9px',
+            verticalAlign: 'bottom',
+            fontSize: '16px',
+            fontWeight: 400
+          }}>
           results
         </Typography>
       </Typography>

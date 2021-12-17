@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@mui/material/Slider';
 import { makeStyles } from '@mui/styles';
@@ -13,14 +13,16 @@ const useStyles = makeStyles((theme) => ({
       background: 'linear-gradient(270deg, #FFD25F 0.13%, #FF5C01 100%)'
     },
     '& .MuiSlider-sizeMedium': {
-      height: theme.typography.pxToRem(8)
+      height: '8px'
     },
     '& .MuiSlider-mark': {
       display: 'none'
     },
     '& .MuiSlider-thumbColorPrimary': {
+      width: '24px',
+      height: '24px',
       background: '#1B1B1B',
-      border: `${theme.typography.pxToRem(6)} solid #FFD05D`
+      border: `6px solid #FFD05D`
     },
     '& .MuiSlider-markLabel': {
       color: theme.palette.white.main,
@@ -37,21 +39,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) => {
-  const [marks, setMarks] = useState([]);
   const sliderRef = useRef(null);
-  useEffect(() => {
-    setMarks(
-      inputMarks.map((value, index) => ({
-        value: index,
-        label: value.toString(),
-        realValue: value
-      }))
-    );
-  }, [inputMarks]);
+
   const classes = useStyles();
 
   const valueLabelFormat = (value) => {
-    return marks.findIndex((mark) => mark.value === value) + 1;
+    const valFormat = inputMarks.findIndex((mark) => mark.value === value) + 1;
+    return valFormat;
   };
   const updateActiveLabel = () => {
     const allMarks = sliderRef?.current?.querySelectorAll('.MuiSlider-markLabel');
@@ -65,20 +59,23 @@ const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) =
     }
   };
   const handleSliderChange = (_event, newValue) => {
-    onValueChanged(marks[newValue]?.realValue);
+    const selectedMark = inputMarks.find((mark) => mark.value === newValue);
+    onValueChanged(selectedMark?.realValue);
     setTimeout(updateActiveLabel, 10);
   };
   return (
     <div className={classes.root} style={styles}>
       <Slider
         ref={sliderRef}
-        aria-label="Custom marks"
+        aria-label="slider"
         step={null}
-        max={marks.length - 1}
+        min={inputMarks[0].value}
+        max={inputMarks[inputMarks.length - 1].value}
         valueLabelFormat={valueLabelFormat}
         valueLabelDisplay="off"
+        defaultValue={inputMarks[0].value}
         onChange={handleSliderChange}
-        marks={marks}
+        marks={inputMarks}
       />
     </div>
   );
@@ -86,7 +83,7 @@ const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) =
 
 PrimarySlider.propTypes = {
   styles: PropTypes.object,
-  inputMarks: PropTypes.arrayOf(PropTypes.number).isRequired,
+  inputMarks: PropTypes.arrayOf(PropTypes.object).isRequired,
   onValueChanged: PropTypes.func
 };
 
