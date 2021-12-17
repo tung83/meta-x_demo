@@ -9,12 +9,12 @@ import PrimaryButton from '../../components/Button/PrimaryButton';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 const pageSizeRange = [
-  { value: 3, label: '3', realValue: 3 },
+  { value: 3, label: ' 3', realValue: 3 },
   { value: 6, label: '6', realValue: 6 },
   { value: 9, label: '9', realValue: 9 },
   { value: 12, label: '12', realValue: 12 },
   { value: 15, label: '15', realValue: 15 },
-  { value: 20, label: '50', realValue: 50 }
+  { value: 19, label: '50  ', realValue: 50 }
 ];
 const SearchForm = () => {
   const [pageSize, setPageSize] = useState(pageSizeRange[0].realValue);
@@ -62,7 +62,7 @@ const SearchForm = () => {
       <PrimarySlider
         onValueChanged={setPageSize}
         inputMarks={pageSizeRange}
-        styles={{ marginTop: '14px' }}></PrimarySlider>
+        styles={{ marginTop: '6px' }}></PrimarySlider>
       <Divider />
       <Box flex={1} />
       <PrimaryButton onClick={navToResult} sx={{ maxWidth: { sm: '343px' } }}>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@mui/material/Slider';
 import { makeStyles } from '@mui/styles';
@@ -26,7 +26,14 @@ const useStyles = makeStyles((theme) => ({
     },
     '& .MuiSlider-markLabel': {
       color: theme.palette.white.main,
-      opacity: 0.5
+      opacity: 0.5,
+      top: '45px',
+      '&.firstLabel': {
+        left: '8px!important'
+      },
+      '&.lastLabel': {
+        left: 'calc(100% - 11px)!important'
+      }
     },
     '& .MuiSlider-markLabelActive': {
       opacity: 1
@@ -38,15 +45,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+function MarkComponent() {
+  return null;
+}
+
 const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) => {
   const sliderRef = useRef(null);
+  useEffect(() => {
+    const allMarks = sliderRef?.current?.querySelectorAll('.MuiSlider-markLabel');
+    allMarks[0].classList.add('firstLabel');
+    allMarks[allMarks.length - 1].classList.add('lastLabel');
+  });
 
   const classes = useStyles();
 
-  const valueLabelFormat = (value) => {
-    const valFormat = inputMarks.findIndex((mark) => mark.value === value) + 1;
-    return valFormat;
-  };
   const updateActiveLabel = () => {
     const allMarks = sliderRef?.current?.querySelectorAll('.MuiSlider-markLabel');
     allMarks.forEach((mark) => {
@@ -69,10 +81,9 @@ const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) =
         ref={sliderRef}
         aria-label="slider"
         step={null}
+        components={{ Mark: MarkComponent }}
         min={inputMarks[0].value}
         max={inputMarks[inputMarks.length - 1].value}
-        valueLabelFormat={valueLabelFormat}
-        valueLabelDisplay="off"
         defaultValue={inputMarks[0].value}
         onChange={handleSliderChange}
         marks={inputMarks}
