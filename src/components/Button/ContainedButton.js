@@ -4,23 +4,24 @@ import Button from '@mui/material/Button';
 const ContainedButton = styled(Button)(({ theme }) => {
   return {
     ...theme.typography.secondary,
-    height: theme.typography.pxToRem(29),
+    height: '29px',
     minWidth: 0,
     textAlign: 'center',
     textTransform: 'capitalize',
+    fontSize: '12px',
     fontWeight: 600,
     lineHeight: 1,
 
     color: theme.palette.bgDefault,
     backgroundColor: theme.palette.white.main,
-    padding: `${theme.typography.pxToRem(8)} ${theme.typography.pxToRem(10)}`,
+    padding: '8px 10px',
     boxSizing: 'border-box',
-    borderRadius: `${theme.typography.pxToRem(20)}`,
+    borderRadius: '20px',
 
     '&:hover': {
       backgroundColor: theme.palette.bgDefault,
-      border: `${theme.typography.pxToRem(1)} solid ${theme.palette.white.main}`,
-      padding: `${theme.typography.pxToRem(7)} ${theme.typography.pxToRem(9)}`,
+      border: `1px solid ${theme.palette.white.main}`,
+      padding: '7px 9px',
       color: theme.palette.white.main
     }
   };

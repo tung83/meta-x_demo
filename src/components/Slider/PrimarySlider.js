@@ -29,10 +29,11 @@ const useStyles = makeStyles((theme) => ({
       opacity: 0.5,
       top: '44px',
       '&.firstLabel': {
-        left: '6px!important'
+        left: '3px!important'
       },
       '&.lastLabel': {
-        left: 'calc(100% - 9px)!important'
+        left: 'calc(100% + 1px)!important',
+        transform: 'translateX(-100%)'
       }
     },
     '& .MuiSlider-markLabelActive': {

@@ -14,7 +14,7 @@ const pageSizeRange = [
   { value: 9, label: '9', realValue: 9 },
   { value: 12, label: '12', realValue: 12 },
   { value: 15, label: '15', realValue: 15 },
-  { value: 18.97, label: '50  ', realValue: 50 }
+  { value: 18.968, label: '50  ', realValue: 50 }
 ];
 const SearchForm = () => {
   const [pageSize, setPageSize] = useState(pageSizeRange[0].realValue);
@@ -27,7 +27,7 @@ const SearchForm = () => {
       flex={1}
       sx={{
         height: 'fit-content',
-        minHeight: { xs: `calc(100vh - 90px)` },
+        minHeight: { xs: `calc(100vh - 87px)` },
         padding: { sx: '20px', sm: '0 40px', lg: '55px 130px 0' }
       }}>
       <LargeHeading>Search</LargeHeading>
@@ -64,7 +64,7 @@ const SearchForm = () => {
         onValueChanged={setPageSize}
         inputMarks={pageSizeRange}
         styles={{ margin: '6px -2px 0 1px' }}></PrimarySlider>
-      <Divider />
+      <Divider sx={{ margin: '21px 0 30px' }} />
       <Box flex={1} />
       <PrimaryButton onClick={navToResult} sx={{ maxWidth: { sm: '343px' } }}>
         Search
