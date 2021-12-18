@@ -35,15 +35,18 @@ const PrimaryTabs = ({ tabs, classNames = '' }) => {
               label={tab.label}
               {...a11yProps(index)}
               sx={{
-                fontWeight: 700,
+                fontWeight: 400,
                 fontSize: '16px',
                 color: () => alpha('#929292', 0.87),
                 textTransform: 'capitalize',
-                flexGrow: 1,
+                flex: 1,
                 lineHeight: 1.5,
                 padding: '13px 16px 9px 16px',
                 letterSpacing: '0.15px',
-                minHeight: '40px'
+                minHeight: '40px',
+                '&.Mui-selected': {
+                  fontWeight: 700
+                }
               }}
             />
           ))}

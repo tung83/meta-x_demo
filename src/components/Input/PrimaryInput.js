@@ -12,7 +12,7 @@ const PrimaryInput = styled(Input)(({ theme }) => {
       fontWeight: 400,
       lineHeight: 1.5,
       border: '3px solid rgba(255, 255, 255, 0.5)',
-      padding: '20px 18px 19px 17px',
+      padding: '20px 18px 19px 15px',
       letterSpacing: '0.25px',
       boxSizing: 'border-box',
       borderRadius: '6px',

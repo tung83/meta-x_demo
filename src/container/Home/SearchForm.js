@@ -14,7 +14,7 @@ const pageSizeRange = [
   { value: 9, label: '9', realValue: 9 },
   { value: 12, label: '12', realValue: 12 },
   { value: 15, label: '15', realValue: 15 },
-  { value: 19, label: '50  ', realValue: 50 }
+  { value: 18.97, label: '50  ', realValue: 50 }
 ];
 const SearchForm = () => {
   const [pageSize, setPageSize] = useState(pageSizeRange[0].realValue);
@@ -28,30 +28,31 @@ const SearchForm = () => {
       sx={{
         height: 'fit-content',
         minHeight: { xs: `calc(100vh - 90px)` },
-        padding: { sx: '20px', sm: '0 40px', lg: '54px 130px 0' }
+        padding: { sx: '20px', sm: '0 40px', lg: '55px 130px 0' }
       }}>
       <LargeHeading>Search</LargeHeading>
       <PrimaryInput
-        sx={{ marginTop: '20px' }}
+        sx={{ marginTop: '19px' }}
         placeholder="Keyword"
         value={searchText}
         onChange={(event) => {
           setSearchText(event.target.value);
         }}
       />
-      <Divider />
+      <Divider sx={{ margin: '29px 0 31px' }} />
       <LargeHeading># of results per page</LargeHeading>
       <Typography
         variant="h3"
         component="h3"
-        sx={{ height: '50px', lineHeight: 1.04167, fontWeight: 700, marginTop: '20px' }}>
+        sx={{ height: '50px', lineHeight: 1.04167, fontWeight: 700, marginTop: '19px' }}>
         {`${pageSize} `}
         <Typography
           variant="span"
           component="span"
           sx={{
             display: 'inline-block',
-            marginBottom: '9px',
+            marginLeft: '-1px',
+            marginBottom: '7px',
             verticalAlign: 'bottom',
             fontSize: '16px',
             fontWeight: 400
@@ -62,7 +63,7 @@ const SearchForm = () => {
       <PrimarySlider
         onValueChanged={setPageSize}
         inputMarks={pageSizeRange}
-        styles={{ marginTop: '6px' }}></PrimarySlider>
+        styles={{ margin: '6px -2px 0 1px' }}></PrimarySlider>
       <Divider />
       <Box flex={1} />
       <PrimaryButton onClick={navToResult} sx={{ maxWidth: { sm: '343px' } }}>

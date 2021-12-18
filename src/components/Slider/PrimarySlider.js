@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiSlider-markLabel': {
       color: theme.palette.white.main,
       opacity: 0.5,
-      top: '45px',
+      top: '44px',
       '&.firstLabel': {
-        left: '8px!important'
+        left: '6px!important'
       },
       '&.lastLabel': {
-        left: 'calc(100% - 11px)!important'
+        left: 'calc(100% - 9px)!important'
       }
     },
     '& .MuiSlider-markLabelActive': {

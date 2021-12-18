@@ -14,10 +14,15 @@ const FollowItem = ({ item }) => {
     <ListItem
       sx={{
         '& .MuiListItemSecondaryAction-root': {
-          right: '17px',
+          right: '18px',
           '& .MuiButton-root': {
             marginBottom: '2px'
           }
+        },
+        '& .MuiListItemText-secondary': {
+          height: '21px',
+          display: 'block',
+          padding: '1px 0 0 1px'
         }
       }}
       secondaryAction={
@@ -29,7 +34,7 @@ const FollowItem = ({ item }) => {
       }
       disablePadding>
       <ListItemButton sx={{ padding: '8px 95px 8px 16px!important', width: '100%' }}>
-        <ListItemAvatar>
+        <ListItemAvatar sx={{ minWidth: '55px' }}>
           <Avatar
             alt={`follower ${item.id}`}
             sx={{ border: '1px solid #F8F8F8', borderRadius: '5px' }}
