@@ -1,8 +1,27 @@
+export const replaceResultImages = (data) => {
+  let index = 0;
+  let indexData = 0;
+  data.data.forEach((row) => {
+    row.avater = `${samples[index].img}?w=219&h=146&fit=crop&auto=format`;
+    // this is for testing data to match the design
+    if (indexData < 20) {
+      row.isFollowing = false;
+      row.name = 'This is a title';
+      row.username = 'username';
+      if (indexData === 2 || indexData === 5) {
+        row.isFollowing = true;
+      }
+    }
+    index = index < samples.length - 1 ? index + 1 : 0;
+    indexData++;
+  });
+  return data;
+};
 export const replaceImages = (data) => {
   let index = 0;
   let indexData = 0;
   data.data.forEach((row) => {
-    row.avater = `${samples[index].img}?w=161&fit=crop&auto=format`;
+    row.avater = `${samples[index].img}?w=219&h=146&fit=crop&auto=format`;
     // this is for testing data to match the design
     if (indexData < 20) {
       row.isFollowing = false;

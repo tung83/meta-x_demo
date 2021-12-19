@@ -7,7 +7,6 @@ import { userPagingFetch, followingPagingFetch } from '../../utils/apiServices';
 const useStyles = makeStyles(() => ({
   sidebar: {
     width: '375px',
-    paddingTop: '19px',
     '& .ScrollbarsCustom': {
       height: 'calc(100vh - 100px)!important'
     },
@@ -17,7 +16,8 @@ const useStyles = makeStyles(() => ({
   },
   sidebarMain: {
     position: 'sticky',
-    top: 0
+    top: 0,
+    paddingTop: '19px'
   }
 }));
 const tabs = [

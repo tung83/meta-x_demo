@@ -5,6 +5,10 @@ export const isMobileScreen = () => {
   const theme = useTheme();
   return !useMediaQuery(theme.breakpoints.up('sm'));
 };
+export const isTabletScreen = () => {
+  const theme = useTheme();
+  return !useMediaQuery(theme.breakpoints.up('md'));
+};
 export const useViewport = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);

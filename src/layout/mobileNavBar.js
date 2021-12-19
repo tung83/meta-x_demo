@@ -1,7 +1,7 @@
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Logo from '../components/Icon/Logo';
-import leftArrow from '../resources/leftArrow.svg';
+import Back from '../components/Icon/Back';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
 import PropTypes from 'prop-types';
@@ -12,6 +12,8 @@ import { headerTopHeight } from '../styles/const';
 import { menuItems } from '../routes/const';
 import clsx from 'clsx';
 import { activeRoute } from '../hooks/router';
+import { Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 
 const useStyles = makeStyles(() => ({
   bottomNav: {
@@ -37,12 +39,19 @@ const TopMobileNav = ({ isHome }) => {
           <Logo />
         </div>
       ) : (
-        <div onClick={handleBackClicked}>
-          <span>
-            <img src={leftArrow} alt="left-arrow" />
-          </span>
-          Home Page
-        </div>
+        <Box display="flex" sx={{ alignItems: 'center' }} onClick={handleBackClicked}>
+          <Back sx={{ marginTop: '7px', marginLeft: '5px' }} />
+          <Typography
+            variant="h5"
+            component="h5"
+            sx={{
+              display: 'inline-block',
+              fontWeight: 400,
+              marginLeft: '19.88px'
+            }}>
+            Home Page
+          </Typography>
+        </Box>
       )}
     </Toolbar>
   );

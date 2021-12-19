@@ -20,7 +20,7 @@ const LayoutPage = () => {
       sx={{
         minHeight: { sm: '100vh' }
       }}>
-      <AppBar sx={{ boxShadow: 'none' }}>
+      <AppBar sx={{ boxShadow: 'none', backgroundColor: '#1b1b1b' }}>
         <SideBar drawerWidth={drawerWidth}></SideBar>
         <MobileNavBar />
       </AppBar>
