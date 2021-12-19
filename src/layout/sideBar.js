@@ -5,17 +5,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import logo from '../resources/logo.svg';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import HomeIcon from '../resources/svgIcons/homeIcon';
-
-const menuItems = [
-  { name: 'Home', href: '/home', icon: <HomeIcon /> },
-  { name: 'Tags', href: '/tags', icon: <HomeIcon /> }
-];
-
+import { menuItems } from '../routes/const';
+import { activeRoute } from '../hooks/router';
 const useStyles = makeStyles((theme) => ({
   listItem: {
     '&.active-menu-item': {
@@ -39,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const SideBar = ({ drawerWidth }) => {
-  const location = useLocation();
   const classes = useStyles();
+  const { isActiveMenu } = activeRoute();
   const listItems = () => (
     <div>
       {menuItems.map((item) => (
         <ListItem
           className={clsx(classes.listItem, {
-            'active-menu-item': location.pathname === item.href
+            'active-menu-item': isActiveMenu(item)
           })}
           button
           key={item.name}

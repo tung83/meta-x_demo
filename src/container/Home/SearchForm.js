@@ -27,24 +27,34 @@ const SearchForm = () => {
       flex={1}
       sx={{
         height: 'fit-content',
-        minHeight: { xs: `calc(100vh - 87px)` },
+        minHeight: { xs: 'calc(100vh - 160px)', sm: 'calc(100vh - 87px)' },
         padding: { sx: '20px', sm: '0 40px', lg: '55px 130px 0' }
       }}>
-      <LargeHeading>Search</LargeHeading>
+      <LargeHeading styles={{ marginTop: { xs: '1px', sm: '0' } }}>Search</LargeHeading>
       <PrimaryInput
-        sx={{ marginTop: '19px' }}
+        sx={{ marginTop: { xs: '16px', sm: '19px' }, marginBottom: { xs: '28px', sm: '0px' } }}
         placeholder="Keyword"
         value={searchText}
         onChange={(event) => {
           setSearchText(event.target.value);
         }}
       />
-      <Divider sx={{ margin: '29px 0 31px' }} />
+      <Divider
+        sx={{
+          display: { xs: 'none', sm: 'block' },
+          margin: '29px 0 31px'
+        }}
+      />
       <LargeHeading># of results per page</LargeHeading>
       <Typography
         variant="h3"
         component="h3"
-        sx={{ height: '50px', lineHeight: 1.04167, fontWeight: 700, marginTop: '19px' }}>
+        sx={{
+          height: '50px',
+          lineHeight: 1.04167,
+          fontWeight: 700,
+          marginTop: { xs: '15px', sm: '19px' }
+        }}>
         {`${pageSize} `}
         <Typography
           variant="span"
@@ -63,9 +73,10 @@ const SearchForm = () => {
       <PrimarySlider
         onValueChanged={setPageSize}
         inputMarks={pageSizeRange}
-        styles={{ margin: '6px -2px 0 1px' }}></PrimarySlider>
-      <Divider sx={{ margin: '21px 0 30px' }} />
-      <Box flex={1} />
+        styles={{ margin: { xs: '6px 0 0', sm: '6px -2px 0 1px' } }}></PrimarySlider>
+      <Box flex={1} sx={{ display: { xs: 'block', sm: 'none' } }} />
+      <Divider sx={{ margin: { xs: '30px 0 80px', sm: '21px 0 30px' } }} />
+      <Box flex={1} sx={{ display: { xs: 'none', sm: 'block' } }} />
       <PrimaryButton onClick={navToResult} sx={{ maxWidth: { sm: '343px' } }}>
         Search
       </PrimaryButton>

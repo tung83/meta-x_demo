@@ -9,7 +9,7 @@ const GuidePge = () => {
     <Stack
       sx={{
         padding: { xs: '0', sm: '0' },
-        height: '100vh'
+        height: { sm: '100vh' }
       }}
       direction="row">
       <SearchForm />

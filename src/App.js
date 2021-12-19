@@ -1,7 +1,7 @@
 import './App.css';
 import RenderRouter from './routes';
 import { BrowserRouter as Router } from 'react-router-dom';
-import theme from './theme';
+import theme from './styles/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from 'react-query';

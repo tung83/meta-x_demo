@@ -5,8 +5,7 @@ import SideBar from './sideBar';
 import MobileNavBar from './mobileNavBar';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-
-const drawerWidth = 80;
+import { drawerWidth, headerTopHeight } from '../styles/const';
 const LayoutPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,9 +18,9 @@ const LayoutPage = () => {
   return (
     <Box
       sx={{
-        minHeight: '100vh'
+        minHeight: { sm: '100vh' }
       }}>
-      <AppBar>
+      <AppBar sx={{ boxShadow: 'none' }}>
         <SideBar drawerWidth={drawerWidth}></SideBar>
         <MobileNavBar />
       </AppBar>
@@ -30,9 +29,10 @@ const LayoutPage = () => {
         component="main"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          minHeight: '100vh',
+          marginTop: { xs: `${headerTopHeight}px`, sm: 0 },
+          minHeight: { sm: '100vh' },
           flexGrow: 1,
-          padding: { xs: '0 24px', sm: '0' },
+          padding: { xs: '0 20px', sm: '0' },
           ml: { sm: `${drawerWidth}px` }
         }}>
         <Suspense fallback={<SuspendFallbackLoading />}>
