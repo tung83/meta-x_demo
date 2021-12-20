@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack } from '@mui/material';
 import SearchForm from '../../container/Home/SearchForm';
-import Follow from '../../container/Follow';
+import Follow from '../../container/Follows';
 import { isMobileScreen } from '../../utils/screen';
 const GuidePge = () => {
   const isMobile = isMobileScreen();

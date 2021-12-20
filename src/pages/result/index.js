@@ -6,7 +6,7 @@ import { resultListPagingFetch } from '../../utils/apiServices';
 import InfiniteScrollStandard from '../../container/List/InfiniteScrollStandard';
 import ImageList from '@mui/material/ImageList';
 import { isMobileScreen, isTabletScreen } from '../../utils/screen';
-import Follow from '../../container/Follow';
+import Follow from '../../container/Follows';
 import Box from '@mui/material/Box';
 import Back from '../../components/Icon/Back';
 import { Typography } from '@mui/material';
