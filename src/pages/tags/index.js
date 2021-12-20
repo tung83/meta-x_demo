@@ -4,12 +4,17 @@ import TagItem from '../../components/Tag/TagItem';
 import { tagsFetchAll } from '../../utils/apiServices';
 import { Box } from '@mui/material';
 import { Typography } from '@mui/material';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const TagsPage = () => {
   const [tags, setTags] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(async () => {
+    setIsLoading(true);
     const result = await tagsFetchAll();
     setTags(result.data);
+    setIsLoading(false);
   }, []);
   return (
     <Stack sx={{ maxWidth: '846px', margin: `81px auto` }}>
@@ -24,6 +29,7 @@ const TagsPage = () => {
         }}>
         Tags
       </Typography>
+
       <Box
         display="grid"
         sx={{
@@ -38,9 +44,16 @@ const TagsPage = () => {
             lg: 'repeat(5, minmax(0, 1fr))'
           }
         }}>
-        {tags.map((user) => (
-          <TagItem key={user.id} item={user}></TagItem>
-        ))}
+        {isLoading ? (
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+            <Box>
+              <Skeleton height={150} />
+              <Skeleton count={2} />
+            </Box>
+          </SkeletonTheme>
+        ) : (
+          tags.map((user) => <TagItem key={user.id} item={user}></TagItem>)
+        )}
       </Box>
     </Stack>
   );
