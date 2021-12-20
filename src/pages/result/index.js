@@ -55,7 +55,7 @@ const ResultPage = () => {
               display: 'inline-block',
               fontSize: { xs: '24px', sm: '30px' },
               fontWeight: 400,
-              marginLeft: { sm: '31.73px' }
+              marginLeft: { lg: '31.73px' }
             }}>
             Results
           </Typography>
@@ -64,7 +64,7 @@ const ResultPage = () => {
         <Box
           flex={1}
           sx={{
-            padding: { sx: '20px', sm: '0 40px', lg: '7px 122px 0 130px' }
+            padding: { sm: '0 40px', lg: '7px 122px 0 130px' }
           }}>
           <InfiniteScrollStandard
             queryKey="users"

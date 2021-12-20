@@ -28,7 +28,8 @@ const SearchForm = () => {
       sx={{
         height: 'fit-content',
         minHeight: { xs: 'calc(100vh - 160px)', sm: 'calc(100vh - 87px)' },
-        padding: { sx: '20px', sm: '0 40px', lg: '55px 130px 0' }
+        padding: { sm: '55px 40px', lg: '55px 130px 0' },
+        marginBottom: { xs: '66px', sm: '0' }
       }}>
       <LargeHeading styles={{ marginTop: { xs: '1px', sm: '0' } }}>Search</LargeHeading>
       <PrimaryInput
