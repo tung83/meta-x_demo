@@ -2,37 +2,46 @@ import { useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import TagItem from '../../components/Tag/TagItem';
 import { tagsFetchAll } from '../../utils/apiServices';
-import { makeStyles } from '@mui/styles';
+import { Box } from '@mui/material';
+import { Typography } from '@mui/material';
 
-const useStyles = makeStyles((theme) => ({
-  tagsWrapper: {
-    maxWidth: theme.typography.pxToRem(846),
-    margin: `100px auto`
-  },
-  grid: {
-    display: 'grid',
-    rowGap: theme.typography.pxToRem(36),
-    columnGap: theme.typography.pxToRem(24),
-    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-    [theme.breakpoints.up('md')]: {
-      gridTemplateColumns: 'repeat(4, minmax(0, 1fr))'
-    }
-  }
-}));
 const TagsPage = () => {
-  const classes = useStyles();
   const [tags, setTags] = useState([]);
   useEffect(async () => {
     const result = await tagsFetchAll();
     setTags(result.data);
   }, []);
   return (
-    <Stack spacing={2} className={classes.tagsWrapper}>
-      <div className={classes.grid}>
+    <Stack sx={{ maxWidth: '846px', margin: `81px auto` }}>
+      <Typography
+        variant="span"
+        component="h4"
+        sx={{
+          display: 'block',
+          fontSize: { xs: '24px', sm: '30px' },
+          marginTop: { xs: '10px', sm: '0' },
+          fontWeight: 400
+        }}>
+        Tags
+      </Typography>
+      <Box
+        display="grid"
+        sx={{
+          paddingRight: { xs: '6px', sm: '0' },
+          paddingLeft: { xs: '5px', sm: '0' },
+          marginTop: '23px',
+          rowGap: { xs: '23px', sm: '34px' },
+          columnGap: '24px',
+          gridTemplateColumns: {
+            xs: 'repeat(2, minmax(0, 1fr))',
+            md: 'repeat(4, minmax(0, 1fr))',
+            lg: 'repeat(5, minmax(0, 1fr))'
+          }
+        }}>
         {tags.map((user) => (
           <TagItem key={user.id} item={user}></TagItem>
         ))}
-      </div>
+      </Box>
     </Stack>
   );
 };

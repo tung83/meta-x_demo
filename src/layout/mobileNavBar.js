@@ -14,6 +14,7 @@ import clsx from 'clsx';
 import { activeRoute } from '../hooks/router';
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   bottomNav: {
@@ -76,6 +77,8 @@ const BottomNav = () => {
         showLabels>
         {menuItems.map((item) => (
           <BottomNavigationAction
+            component={Link}
+            to={item.href}
             key={item.name}
             className={clsx(classes.bottomNav, {
               'active-menu-item': isActiveMenu(item)
