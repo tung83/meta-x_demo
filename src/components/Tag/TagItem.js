@@ -8,7 +8,7 @@ const TagItem = ({ item }) => {
         sx={{
           position: 'relative',
           paddingTop: '100%',
-          marginBottom: '10px'
+          marginBottom: { xs: '11px', sm: '10px' }
         }}>
         <Button
           variant="outlined"
@@ -23,7 +23,10 @@ const TagItem = ({ item }) => {
             borderRadius: '10px',
             backgroundColor: '#262626',
             justifyContent: 'start',
-            alignItems: 'flex-end'
+            alignItems: 'flex-end',
+            '&:hover': {
+              border: '4px solid #ffffff'
+            }
           }}>
           <Typography
             variant="h5"
@@ -54,7 +57,12 @@ const TagItem = ({ item }) => {
           variant="caption"
           component="div"
           noWrap
-          sx={{ fontSize: '11.175px', color: '#b2b2b2', letterSpacing: '0.3725px' }}>
+          sx={{
+            fontSize: '11.175px',
+            color: '#b2b2b2',
+            letterSpacing: '0.3725px',
+            margin: { xs: '-1px 0 1px', sm: 0 }
+          }}>
           {`${item.count} Results`}
         </Typography>
       </div>

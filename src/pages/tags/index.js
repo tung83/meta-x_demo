@@ -30,7 +30,7 @@ const TagsPage = () => {
           paddingRight: { xs: '6px', sm: '0' },
           paddingLeft: { xs: '5px', sm: '0' },
           marginTop: '23px',
-          rowGap: { xs: '23px', sm: '34px' },
+          rowGap: { xs: '21px', sm: '34px' },
           columnGap: '24px',
           gridTemplateColumns: {
             xs: 'repeat(2, minmax(0, 1fr))',
