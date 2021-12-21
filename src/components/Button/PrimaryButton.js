@@ -24,4 +24,6 @@ const PrimaryButton = styled(Button)(({ theme }) => {
     }
   };
 });
+
+PrimaryButton.propTypes = {};
 export default PrimaryButton;

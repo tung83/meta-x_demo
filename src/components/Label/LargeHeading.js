@@ -6,7 +6,8 @@ const LargeHeading = ({ styles, children }) => {
     <Typography
       variant="h5"
       component="h5"
-      sx={{ lineHeight: 1.5, textTransform: 'capitalize', ...styles }}>
+      sx={{ lineHeight: 1.5, textTransform: 'capitalize', ...styles }}
+    >
       {children}
     </Typography>
   );

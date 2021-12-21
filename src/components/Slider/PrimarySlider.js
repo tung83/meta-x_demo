@@ -40,6 +40,9 @@ const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) =
   const sliderRef = useRef(null);
   useEffect(() => {
     const allMarks = sliderRef?.current?.querySelectorAll('.MuiSlider-markLabel');
+    if (allMarks.length === 0) {
+      return;
+    }
     allMarks[0].classList.add('firstLabel');
     allMarks[allMarks.length - 1].classList.add('lastLabel');
   });
@@ -92,9 +95,9 @@ const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) =
         aria-label="slider"
         step={null}
         components={{ Mark: MarkComponent }}
-        min={inputMarks[0].value}
-        max={inputMarks[inputMarks.length - 1].value}
-        defaultValue={inputMarks[0].value}
+        min={inputMarks.length ? inputMarks[0].value : 0}
+        max={inputMarks.length ? inputMarks[inputMarks.length - 1].value : 0}
+        defaultValue={inputMarks.length ? inputMarks[0].value : 0}
         onChange={handleSliderChange}
         marks={inputMarks}
       />
