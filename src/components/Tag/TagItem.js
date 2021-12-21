@@ -9,7 +9,8 @@ const TagItem = ({ item }) => {
           position: 'relative',
           paddingTop: '100%',
           marginBottom: { xs: '11px', sm: '10px' }
-        }}>
+        }}
+      >
         <Button
           variant="outlined"
           sx={{
@@ -27,7 +28,8 @@ const TagItem = ({ item }) => {
             '&:hover': {
               border: '4px solid #ffffff'
             }
-          }}>
+          }}
+        >
           <Typography
             variant="h5"
             component="h5"
@@ -40,7 +42,8 @@ const TagItem = ({ item }) => {
               borderRadius: '8px',
               marginBottom: '5px',
               textTransform: 'capitalize'
-            }}>
+            }}
+          >
             {item.name}
           </Typography>
         </Button>
@@ -50,7 +53,8 @@ const TagItem = ({ item }) => {
           variant="body1"
           component="p"
           noWrap
-          sx={{ fontSize: '14.9px', letterSpacing: '0.139688px' }}>
+          sx={{ fontSize: '14.9px', letterSpacing: '0.139688px' }}
+        >
           {item.name}
         </Typography>
         <Typography
@@ -62,7 +66,8 @@ const TagItem = ({ item }) => {
             color: '#b2b2b2',
             letterSpacing: '0.3725px',
             margin: { xs: '-1px 0 1px', sm: 0 }
-          }}>
+          }}
+        >
           {`${item.count} Results`}
         </Typography>
       </div>

@@ -3,18 +3,19 @@ import { Stack } from '@mui/material';
 import SearchForm from '../../container/Home/SearchForm';
 import Follow from '../../container/Follows';
 import { isMobileScreen } from '../../hooks/screen';
-const GuidePge = () => {
+const HomePage = () => {
   const isMobile = isMobileScreen();
   return (
     <Stack
       sx={{
         padding: { xs: '0', sm: '0' },
-        height: { sm: 'var(--app-height)' }
+        minHeight: { sm: 'var(--app-height)' }
       }}
-      direction="row">
+      direction="row"
+    >
       <SearchForm />
       {!isMobile && <Follow />}
     </Stack>
   );
 };
-export default GuidePge;
+export default HomePage;

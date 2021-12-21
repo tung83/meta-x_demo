@@ -49,7 +49,8 @@ const SideBar = ({ drawerWidth }) => {
             paddingBottom: '9px',
             flexDirection: 'column',
             alignItems: 'center'
-          }}>
+          }}
+        >
           <Link to={item.href} className={classes.linkItem}>
             <ListItemIcon
               sx={{
@@ -57,7 +58,8 @@ const SideBar = ({ drawerWidth }) => {
                 marginLeft: '1px',
                 'svg path': { color: '#8a8a8f' },
                 ':hover svg path': { color: 'white.main' }
-              }}>
+              }}
+            >
               {item.icon}
             </ListItemIcon>
             <ListItemText
@@ -97,7 +99,8 @@ const SideBar = ({ drawerWidth }) => {
           borderRight: '1px solid rgba(0, 0, 0, 0.2)'
         }
       }}
-      open>
+      open
+    >
       <>
         <Link to="/" className={classes.topLink}>
           <img src={logo} alt="logo" />

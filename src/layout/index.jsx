@@ -19,7 +19,8 @@ const LayoutPage = () => {
     <Box
       sx={{
         minHeight: { sm: 'var(--app-height)' }
-      }}>
+      }}
+    >
       <AppBar sx={{ boxShadow: 'none', backgroundColor: '#1b1b1b' }}>
         <SideBar drawerWidth={drawerWidth}></SideBar>
         <MobileNavBar />
@@ -34,7 +35,8 @@ const LayoutPage = () => {
           flexGrow: 1,
           padding: { xs: '0 20px', sm: '0' },
           ml: { sm: `${drawerWidth}px` }
-        }}>
+        }}
+      >
         <Suspense fallback={<SuspendFallbackLoading />}>
           <Outlet />
         </Suspense>

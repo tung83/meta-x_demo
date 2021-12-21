@@ -8,7 +8,8 @@ function Logo({ sx, ...others }) {
       {...others}
       variant="span"
       component="span"
-      sx={{ '.left-arrow-icon': { width: '12.77px', height: '21.67px' }, ...sx }}>
+      sx={{ '.left-arrow-icon': { width: '12.77px', height: '21.67px' }, ...sx }}
+    >
       <img className="left-arrow-icon" src={leftArrow} alt="left-arrow" />
     </Typography>
   );

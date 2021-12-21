@@ -34,7 +34,8 @@ const TopMobileNav = ({ isHome }) => {
         padding: '28px 10px 27px 21px',
         backgroundColor: '#181818',
         display: { sm: 'none' }
-      }}>
+      }}
+    >
       {isHome ? (
         <div>
           <Logo />
@@ -49,7 +50,8 @@ const TopMobileNav = ({ isHome }) => {
               display: 'inline-block',
               fontWeight: 400,
               marginLeft: '19.88px'
-            }}>
+            }}
+          >
             Home Page
           </Typography>
         </Box>
@@ -74,7 +76,8 @@ const BottomNav = () => {
           backdropFilter: 'blur(54.3656px)',
           display: { sm: 'none' }
         }}
-        showLabels>
+        showLabels
+      >
         {menuItems.map((item) => (
           <BottomNavigationAction
             component={Link}

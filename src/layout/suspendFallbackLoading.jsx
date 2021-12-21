@@ -9,7 +9,8 @@ const SuspendFallbackLoading = () => {
         height: 'var(--app-height)',
         alignItems: 'center',
         justifyContent: 'center'
-      }}>
+      }}
+    >
       <CircularProgress />
     </Box>
   );

@@ -25,7 +25,8 @@ const TagsPage = () => {
           fontSize: { xs: '24px', sm: '30px' },
           marginTop: { xs: '10px', sm: '0' },
           fontWeight: 400
-        }}>
+        }}
+      >
         Tags
       </Typography>
 
@@ -42,7 +43,8 @@ const TagsPage = () => {
             md: 'repeat(4, minmax(0, 1fr))',
             lg: 'repeat(5, minmax(0, 1fr))'
           }
-        }}>
+        }}
+      >
         {isLoading ? (
           <SkeletonLoading sx={{ height: '150px', borderRadius: '10px' }} />
         ) : (

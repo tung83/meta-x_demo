@@ -32,7 +32,8 @@ const FollowItem = ({ item }) => {
           <OutlineButton>Follow</OutlineButton>
         )
       }
-      disablePadding>
+      disablePadding
+    >
       <ListItemButton sx={{ padding: '8px 95px 8px 16px!important', width: '100%' }}>
         <ListItemAvatar sx={{ minWidth: '55px' }}>
           <Avatar
@@ -58,7 +59,8 @@ const FollowItem = ({ item }) => {
               <Typography
                 sx={{ display: 'block', opacity: '0.5', fontSize: '14px' }}
                 component="span"
-                noWrap>
+                noWrap
+              >
                 {`@${item.username}`}
               </Typography>
             </React.Fragment>

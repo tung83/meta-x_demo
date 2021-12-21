@@ -82,7 +82,7 @@ const PrimarySlider = ({ styles, inputMarks = [], onValueChanged = () => {} }) =
           '& .MuiSlider-markLabel': {
             color: (theme) => theme.palette.white.main,
             opacity: 0.5,
-            top: { xs: '43px', sm: '44px' },
+            top: { xs: '43px', sm: '37px' },
             '&.firstLabel': {
               left: '3px!important'
             },

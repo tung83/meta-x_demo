@@ -1,7 +1,8 @@
 import { lazy } from 'react';
-import Stack from '@mui/material/Stack';
-import ImageItem from '../../components/Card/ImageItem';
 import { useParams } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+import { Typography } from '@mui/material';
+import ImageItem from '../../components/Card/ImageItem';
 import { resultListPagingFetch } from '../../utils/apiServices';
 import InfiniteScrollStandard from '../../container/List/InfiniteScrollStandard';
 import ImageList from '@mui/material/ImageList';
@@ -9,7 +10,6 @@ import { isMobileScreen, isTabletScreen } from '../../hooks/screen';
 import Follow from '../../container/Follows';
 import Box from '@mui/material/Box';
 import Back from '../../components/Icon/Back';
-import { Typography } from '@mui/material';
 import SkeletonLoading from '../../components/Progress/SkeletonLoading';
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../404'));
 
@@ -28,7 +28,8 @@ const ResultPage = () => {
         sx={{
           columnGap: '34px!important',
           rowGap: { xs: '30px!important', sm: '21px!important' }
-        }}>
+        }}
+      >
         {renderItems}
       </ImageList>
     );
@@ -50,12 +51,14 @@ const ResultPage = () => {
         sx={{
           height: 'fit-content',
           minHeight: { xs: 'calc(var(--app-height) - 160px)', sm: 'calc(var(--app-height) - 87px)' }
-        }}>
+        }}
+      >
         <Box
           sx={{
             padding: { xs: '21px 0 7px', sm: '40px 40px 0', lg: '93px 92.5px 0' }
-          }}>
-          <Back sx={{ display: { xs: 'none' } }} />
+          }}
+        >
+          <Back sx={{ display: { xs: 'none', sm: 'inline-block' } }} />
           <Typography
             variant="span"
             component="h4"
@@ -64,7 +67,8 @@ const ResultPage = () => {
               fontSize: { xs: '24px', sm: '30px' },
               fontWeight: 400,
               marginLeft: { lg: '31.73px' }
-            }}>
+            }}
+          >
             Results
           </Typography>
         </Box>
@@ -73,7 +77,8 @@ const ResultPage = () => {
           flex={1}
           sx={{
             padding: { sm: '0 40px', lg: '7px 122px 0 130px' }
-          }}>
+          }}
+        >
           <InfiniteScrollStandard
             queryKey="users"
             queryFn={(pageParam) => resultListPagingFetch({ ...pageParam, pageSize, keyword })}

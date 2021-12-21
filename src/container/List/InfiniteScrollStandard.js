@@ -35,7 +35,8 @@ const InfiniteScrollStandard = ({
           <LinearLoading />
         </div>
       }
-      {...others}>
+      {...others}
+    >
       {renderItems(items)}
     </InfiniteScroll>
   );

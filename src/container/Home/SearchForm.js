@@ -30,7 +30,8 @@ const SearchForm = () => {
         minHeight: { xs: 'calc(var(--app-height) - 160px)', sm: 'calc(var(--app-height) - 87px)' },
         padding: { sm: '55px 40px', lg: '55px 130px 0' },
         marginBottom: { xs: '66px', sm: '0' }
-      }}>
+      }}
+    >
       <LargeHeading styles={{ marginTop: { xs: '1px', sm: '0' } }}>Search</LargeHeading>
       <PrimaryInput
         sx={{ marginTop: { xs: '16px', sm: '19px' }, marginBottom: { xs: '28px', sm: '0px' } }}
@@ -55,7 +56,8 @@ const SearchForm = () => {
           lineHeight: 1.04167,
           fontWeight: 700,
           marginTop: { xs: '15px', sm: '19px' }
-        }}>
+        }}
+      >
         {`${pageSize} `}
         <Typography
           variant="span"
@@ -67,14 +69,16 @@ const SearchForm = () => {
             verticalAlign: 'bottom',
             fontSize: '16px',
             fontWeight: 400
-          }}>
+          }}
+        >
           results
         </Typography>
       </Typography>
       <PrimarySlider
         onValueChanged={setPageSize}
         inputMarks={pageSizeRange}
-        styles={{ margin: { xs: '6px 0 0', sm: '6px -2px 0 1px' } }}></PrimarySlider>
+        styles={{ margin: { xs: '6px 0 0', sm: '6px -2px 0 1px' } }}
+      ></PrimarySlider>
       <Box flex={1} sx={{ display: { xs: 'block', sm: 'none' } }} />
       <Divider sx={{ margin: { xs: '30px 0 80px', sm: '21px 0 30px' } }} />
       <Box flex={1} sx={{ display: { xs: 'none', sm: 'block' } }} />

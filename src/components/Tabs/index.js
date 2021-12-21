@@ -28,7 +28,8 @@ const PrimaryTabs = ({ tabs, classNames = '' }) => {
           sx={{
             minHeight: '40px'
           }}
-          aria-label="basic tabs ">
+          aria-label="basic tabs "
+        >
           {tabs?.map((tab, index) => (
             <Tab
               key={index}

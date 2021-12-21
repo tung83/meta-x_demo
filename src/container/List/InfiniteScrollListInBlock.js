@@ -22,7 +22,8 @@ const InfiniteScrollListInBlock = ({ queryKey, queryFn, renderItems }) => {
         queryFn={queryFn}
         renderItems={renderItems}
         getScrollParent={() => scrollParentRef.current?.scrollerElement}
-        useWindow={false}></InfiniteScrollStandard>
+        useWindow={false}
+      ></InfiniteScrollStandard>
     </Scrollbar>
   );
 };
