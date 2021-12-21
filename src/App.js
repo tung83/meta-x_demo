@@ -5,8 +5,10 @@ import theme from './styles/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { setAppHeight } from './utils/screen';
 const App = () => {
   const queryClient = new QueryClient();
+  setAppHeight();
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>

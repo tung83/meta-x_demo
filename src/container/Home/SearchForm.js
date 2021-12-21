@@ -27,7 +27,7 @@ const SearchForm = () => {
       flex={1}
       sx={{
         height: 'fit-content',
-        minHeight: { xs: 'calc(100vh - 160px)', sm: 'calc(100vh - 87px)' },
+        minHeight: { xs: 'calc(var(--app-height) - 160px)', sm: 'calc(var(--app-height) - 87px)' },
         padding: { sm: '55px 40px', lg: '55px 130px 0' },
         marginBottom: { xs: '66px', sm: '0' }
       }}>

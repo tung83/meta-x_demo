@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
   sidebar: {
     width: '375px',
     '& .ScrollbarsCustom': {
-      height: 'calc(100vh - 100px)!important'
+      height: 'calc(var(--app-height) - 100px)!important'
     },
     '& .linearLoading': {
       margin: '0 17px 0 16px'

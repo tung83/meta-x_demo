@@ -6,7 +6,7 @@ const SuspendFallbackLoading = () => {
       sx={{
         display: 'flex',
         width: '100%',
-        height: '100vh',
+        height: 'var(--app-height)',
         alignItems: 'center',
         justifyContent: 'center'
       }}>

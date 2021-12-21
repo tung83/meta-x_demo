@@ -10,14 +10,10 @@ export const isTabletScreen = () => {
   return !useMediaQuery(theme.breakpoints.up('md'));
 };
 export const useViewport = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
   const [isMobile, setIsMobile] = useState(isMobileScreen());
 
   useEffect(() => {
     const handleWindowResize = () => {
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
       setIsMobile(isMobileScreen());
     };
 
@@ -25,5 +21,18 @@ export const useViewport = () => {
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
 
-  return { width, height, isMobile };
+  return { isMobile };
+};
+
+export const setAppHeight = () => {
+  const handleWindowResize = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, []);
+  handleWindowResize();
+  return null;
 };

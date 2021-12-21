@@ -18,7 +18,7 @@ const LayoutPage = () => {
   return (
     <Box
       sx={{
-        minHeight: { sm: '100vh' }
+        minHeight: { sm: 'var(--app-height)' }
       }}>
       <AppBar sx={{ boxShadow: 'none', backgroundColor: '#1b1b1b' }}>
         <SideBar drawerWidth={drawerWidth}></SideBar>
@@ -30,7 +30,7 @@ const LayoutPage = () => {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           marginTop: { xs: `${headerTopHeight}px`, sm: 0 },
-          minHeight: { sm: '100vh' },
+          minHeight: { sm: 'var(--app-height)' },
           flexGrow: 1,
           padding: { xs: '0 20px', sm: '0' },
           ml: { sm: `${drawerWidth}px` }
