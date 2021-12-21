@@ -4,14 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Features in this project
 
-MUI React
-react-infinite-scroller
-react-scrollbars-custom
-Router v6
-axios
-clsx
-storybook
-jest test
+MUI React.\
+react-infinite-scroller.\
+react-scrollbars-custom.\
+Router v6.\
+axios.\
+clsx.\
+storybook.\
+jest test.\
 
 ## Fixel perfect on figma file
 
