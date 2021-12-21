@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { resultListPagingFetch } from '../../utils/apiServices';
 import InfiniteScrollStandard from '../../container/List/InfiniteScrollStandard';
 import ImageList from '@mui/material/ImageList';
-import { isMobileScreen, isTabletScreen } from '../../utils/screen';
+import { isMobileScreen, isTabletScreen } from '../../hooks/screen';
 import Follow from '../../container/Follows';
 import Box from '@mui/material/Box';
 import Back from '../../components/Icon/Back';

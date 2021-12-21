@@ -1,10 +1,12 @@
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useState } from 'react';
+
 export const isMobileScreen = () => {
   const theme = useTheme();
   return !useMediaQuery(theme.breakpoints.up('sm'));
 };
+
 export const isTabletScreen = () => {
   const theme = useTheme();
   return !useMediaQuery(theme.breakpoints.up('md'));
