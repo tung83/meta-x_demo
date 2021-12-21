@@ -10,6 +10,7 @@ import Follow from '../../container/Follows';
 import Box from '@mui/material/Box';
 import Back from '../../components/Icon/Back';
 import { Typography } from '@mui/material';
+import SkeletonLoading from '../../components/Progress/SkeletonLoading';
 const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '../404'));
 
 const ResultPage = () => {
@@ -20,7 +21,7 @@ const ResultPage = () => {
   if (!pageSizeMatches) {
     return <NotFound />;
   }
-  const renderItems = (items) => {
+  const renderGrid = (renderItems) => {
     return (
       <ImageList
         cols={isMobile ? 1 : isTablet ? 2 : 3}
@@ -28,10 +29,17 @@ const ResultPage = () => {
           columnGap: '34px!important',
           rowGap: { xs: '30px!important', sm: '21px!important' }
         }}>
+        {renderItems}
+      </ImageList>
+    );
+  };
+  const renderItems = (items) => {
+    return (
+      <>
         {items.map((user) => (
           <ImageItem key={user.id} item={user}></ImageItem>
         ))}
-      </ImageList>
+      </>
     );
   };
   return (
@@ -69,7 +77,8 @@ const ResultPage = () => {
           <InfiniteScrollStandard
             queryKey="users"
             queryFn={(pageParam) => resultListPagingFetch({ ...pageParam, pageSize, keyword })}
-            renderItems={renderItems}
+            renderItems={(items) => renderGrid(renderItems(items))}
+            loadingComponent={renderGrid(<SkeletonLoading sx={{ height: '150px' }} />)}
           />
         </Box>
       </Stack>

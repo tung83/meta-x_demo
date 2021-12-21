@@ -3,13 +3,19 @@ import { useInfiniteQuery } from 'react-query';
 import PropTypes from 'prop-types';
 import LinearLoading from '../../components/Progress/LinearLoading';
 import { useState } from 'react';
-const InfiniteScrollStandard = ({ queryKey, queryFn, renderItems, ...others }) => {
+const InfiniteScrollStandard = ({
+  queryKey,
+  queryFn,
+  renderItems,
+  loadingComponent,
+  ...others
+}) => {
   const { data, error, fetchNextPage, hasNextPage, status } = useInfiniteQuery(queryKey, queryFn, {
     getNextPageParam: (lastPage) => lastPage.nextPage
   });
   const [loading, setLoading] = useState(false);
   if (status === 'loading') {
-    return <LinearLoading />;
+    return loadingComponent || <LinearLoading />;
   }
 
   if (status === 'error') {
@@ -37,6 +43,7 @@ const InfiniteScrollStandard = ({ queryKey, queryFn, renderItems, ...others }) =
 InfiniteScrollStandard.propTypes = {
   queryKey: PropTypes.string.isRequired,
   queryFn: PropTypes.func.isRequired,
-  renderItems: PropTypes.func.isRequired
+  renderItems: PropTypes.func.isRequired,
+  loadingComponent: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
 };
 export default InfiniteScrollStandard;

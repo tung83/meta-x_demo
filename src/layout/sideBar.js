@@ -52,7 +52,12 @@ const SideBar = ({ drawerWidth }) => {
           }}>
           <Link to={item.href} className={classes.linkItem}>
             <ListItemIcon
-              sx={{ minWidth: 'auto', marginLeft: '1px', 'svg path': { color: '#8a8a8f' } }}>
+              sx={{
+                minWidth: 'auto',
+                marginLeft: '1px',
+                'svg path': { color: '#8a8a8f' },
+                ':hover svg path': { color: 'white.main' }
+              }}>
               {item.icon}
             </ListItemIcon>
             <ListItemText

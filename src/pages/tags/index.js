@@ -4,8 +4,7 @@ import TagItem from '../../components/Tag/TagItem';
 import { tagsFetchAll } from '../../utils/apiServices';
 import { Box } from '@mui/material';
 import { Typography } from '@mui/material';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import SkeletonLoading from '../../components/Progress/SkeletonLoading';
 
 const TagsPage = () => {
   const [tags, setTags] = useState([]);
@@ -45,12 +44,7 @@ const TagsPage = () => {
           }
         }}>
         {isLoading ? (
-          <SkeletonTheme baseColor="#202020" highlightColor="#444">
-            <Box>
-              <Skeleton height={150} />
-              <Skeleton count={2} />
-            </Box>
-          </SkeletonTheme>
+          <SkeletonLoading sx={{ height: '150px', borderRadius: '10px' }} />
         ) : (
           tags.map((user) => <TagItem key={user.id} item={user}></TagItem>)
         )}

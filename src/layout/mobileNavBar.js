@@ -85,6 +85,7 @@ const BottomNav = () => {
             })}
             sx={{
               'svg path': { color: '#8a8a8f' },
+              ':hover svg path': { color: 'white.main' },
               '&.active-menu-item svg path': { color: 'white.main' }
             }}
             icon={item.icon}

@@ -33,6 +33,13 @@ const theme = createTheme({
           margin: '30px 0'
         }
       }
+    },
+    MuiSkeleton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#262626'
+        }
+      }
     }
   },
   breakpoints: {
